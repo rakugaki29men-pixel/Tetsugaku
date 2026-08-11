@@ -1,0 +1,19 @@
+{
+  "name": "philo-app-server",
+  "version": "0.1.0",
+  "description": "哲学喫茶アプリ バックエンドAPI（Claude API連携）",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

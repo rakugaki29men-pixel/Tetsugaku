@@ -1,0 +1,2778 @@
+[
+  {
+    "id": "socrates",
+    "name": "ソクラテス",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "超越",
+        "score": 3
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 6
+      },
+      "reason_experience": {
+        "tag": "理性",
+        "score": 3
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 7
+      }
+    },
+    "thought": "問答法・無知の知・魂の世話",
+    "favorite_food": "ワインとオリーブ",
+    "hobby": "街を素足で歩きながら市民と対話する",
+    "catchphrase": "「無知の知、それが出発点だよ」",
+    "places": "アテナイ（現ギリシャ・アテネ）",
+    "family": "妻クサンティッペ（口やかましいと有名）、息子3人",
+    "birth": {
+      "raw": "紀元前470年頃",
+      "year": -470
+    },
+    "death": {
+      "raw": "紀元前399年",
+      "year": -399
+    },
+    "books": [
+      "ソクラテスの弁明（プラトン著）",
+      "パイドン（プラトン著）",
+      "クリトン（プラトン著）",
+      "メノン（プラトン著）",
+      "饗宴（プラトン著）"
+    ],
+    "ism": "問答法",
+    "meigen": "「無知の知」",
+    "meigenNote": "自分が知らないということを自覚することこそが、知への第一歩だという教え。"
+  },
+  {
+    "id": "plato",
+    "name": "プラトン",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "超越",
+        "score": 1
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 1
+      },
+      "reason_experience": {
+        "tag": "理性",
+        "score": 0
+      },
+      "static_dynamic": {
+        "tag": "静的",
+        "score": 1
+      }
+    },
+    "thought": "イデア論・哲学者王・魂の不死",
+    "favorite_food": "ザクロとチーズ",
+    "hobby": "体育（元レスラー）、詩作、アカデメイアでの講義",
+    "catchphrase": "「この世界の奥に、もっと本物の世界がある」",
+    "places": "アテナイ（現ギリシャ・アテネ）",
+    "family": "未婚（アカデメイア創設に専念）",
+    "birth": {
+      "raw": "紀元前428年頃",
+      "year": -428
+    },
+    "death": {
+      "raw": "紀元前348年頃",
+      "year": -348
+    },
+    "books": [
+      "国家",
+      "パイドン",
+      "パイドロス",
+      "ティマイオス",
+      "饗宴"
+    ],
+    "ism": "イデア論",
+    "meigen": "「哲学者が王となるまで、国に平和はない」",
+    "meigenNote": "理想の政治には、真理を知る哲学者による統治が必要だという『哲人王』の思想。"
+  },
+  {
+    "id": "aristotle",
+    "name": "アリストテレス",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 7
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 4
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 6
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 6
+      }
+    },
+    "thought": "質料形相論・目的論・ニコマコス倫理学",
+    "favorite_food": "タコとブドウ酒",
+    "hobby": "歩きながら講義する（逍遥学派）、自然観察・解剖",
+    "catchphrase": "「よく観察することから、すべては始まる」",
+    "places": "マケドニア・スタギラ生まれ、アテナイのリュケイオン",
+    "family": "妻ピュティアス、後妻ヘルピュリス、息子ニコマコス",
+    "birth": {
+      "raw": "紀元前384年",
+      "year": -384
+    },
+    "death": {
+      "raw": "紀元前322年",
+      "year": -322
+    },
+    "books": [
+      "ニコマコス倫理学",
+      "形而上学",
+      "政治学",
+      "詩学",
+      "霊魂論"
+    ],
+    "ism": "目的論・経験主義の祖",
+    "meigen": "「人間はポリス的動物である」",
+    "meigenNote": "人は社会・共同体の中でこそ、人間らしく生きられるという考え。"
+  },
+  {
+    "id": "pythagoras",
+    "name": "ピタゴラス",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "超越",
+        "score": 2
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 1
+      },
+      "reason_experience": {
+        "tag": "理性",
+        "score": 2
+      },
+      "static_dynamic": {
+        "tag": "静的",
+        "score": 2
+      }
+    },
+    "thought": "数の哲学・魂の輪廻・宇宙の調和・万物は数なり",
+    "favorite_food": "豆以外の野菜と穀物（豆を禁忌とした）",
+    "hobby": "数学・音楽の研究、共同体での共同生活",
+    "catchphrase": "「数の中に、世界の秘密がある」",
+    "places": "サモス島（現ギリシャ）生まれ、南イタリア・クロトン",
+    "family": "不明（謎多き人物）",
+    "birth": {
+      "raw": "紀元前570年頃",
+      "year": -570
+    },
+    "death": {
+      "raw": "紀元前495年頃",
+      "year": -495
+    },
+    "books": [
+      "黄金詩篇（弟子著）",
+      "ピタゴラス伝（イアンブリコス）",
+      "プラトン：ティマイオス"
+    ],
+    "ism": "数の神秘主義",
+    "meigen": "「万物は数である」",
+    "meigenNote": "世界のすべての秩序や調和は、数の関係によって説明できるという思想。"
+  },
+  {
+    "id": "heraclitus",
+    "name": "ヘラクレイトス",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 8
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 3
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 7
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 10
+      }
+    },
+    "thought": "万物流転（パンタ・レイ）・ロゴス・火の哲学・対立の統一",
+    "favorite_food": "水と粗食（孤独を好む）",
+    "hobby": "川を眺める、子どもと遊ぶ、謎めいた断片を書く",
+    "catchphrase": "「同じ川に、二度は入れない」",
+    "places": "エフェソス（現トルコ）",
+    "family": "王族の血筋とされるが詳細不明",
+    "birth": {
+      "raw": "紀元前535年頃",
+      "year": -535
+    },
+    "death": {
+      "raw": "紀元前475年頃",
+      "year": -475
+    },
+    "books": [
+      "自然について（断片）",
+      "ヘラクレイトス断片集"
+    ],
+    "ism": "生成の哲学",
+    "meigen": "「万物は流転する」",
+    "meigenNote": "この世界に留まるものは何もなく、すべては絶えず変化し続けているという考え。"
+  },
+  {
+    "id": "epicurus",
+    "name": "エピクロス",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 8
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 7
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 8
+      },
+      "static_dynamic": {
+        "tag": "静的",
+        "score": 5
+      }
+    },
+    "thought": "快楽主義・アタラクシア（心の平静）・原子論・死の恐怖からの解放",
+    "favorite_food": "パンとチーズ、水（シンプルな快楽を推奨）",
+    "hobby": "庭で友と語らう、手紙を書く、自然を観察する",
+    "catchphrase": "「今この瞬間の静けさが、一番の幸せだよ」",
+    "places": "サモス島生まれ、アテナイの「庭（ケポス）」",
+    "family": "未婚（学園コミュニティで生涯を過ごす）",
+    "birth": {
+      "raw": "紀元前341年",
+      "year": -341
+    },
+    "death": {
+      "raw": "紀元前270年",
+      "year": -270
+    },
+    "books": [
+      "メノイケウスへの手紙",
+      "ヘロドトスへの手紙",
+      "主要教説",
+      "ディオゲネス・ラエルティオス：哲学者列伝"
+    ],
+    "ism": "快楽主義（エピクロス主義）",
+    "meigen": "「死は我々にとって何ものでもない」",
+    "meigenNote": "死は経験されるものではないのだから、恐れる必要はないという教え。"
+  },
+  {
+    "id": "marcus_aurelius",
+    "name": "マルクス・アウレリウス",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "超越",
+        "score": 3
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 3
+      },
+      "reason_experience": {
+        "tag": "理性",
+        "score": 2
+      },
+      "static_dynamic": {
+        "tag": "静的",
+        "score": 3
+      }
+    },
+    "thought": "ストア哲学・内省・義務・ロゴス・宇宙的理性",
+    "favorite_food": "オリーブとパン（質素な食事を好む）",
+    "hobby": "日記を書く（自省録）、剣術稽古、読書",
+    "catchphrase": "「外のことじゃなく、自分の内側を整えることだ」",
+    "places": "ローマ（ローマ帝国各地を転戦）",
+    "family": "妻ファウスティナ、子13人（後継者コンモドゥスが有名）",
+    "birth": {
+      "raw": "121年",
+      "year": 121
+    },
+    "death": {
+      "raw": "180年",
+      "year": 180
+    },
+    "books": [
+      "自省録（瞑想録）",
+      "エピクテトス語録（アリアノス記録）",
+      "セネカ：幸福な生について",
+      "ストア哲学入門"
+    ],
+    "ism": "ストア派",
+    "meigen": "「人生は、思うがままの姿になる」",
+    "meigenNote": "起きた出来事そのものより、それをどう受け止めるかが人生を決めるという教え。"
+  },
+  {
+    "id": "epictetus",
+    "name": "エピクテトス",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 4
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 6
+      },
+      "reason_experience": {
+        "tag": "理性",
+        "score": 3
+      },
+      "static_dynamic": {
+        "tag": "静的",
+        "score": 2
+      }
+    },
+    "thought": "ストア哲学・内的自由・プロアイレシス（意志）・二分法",
+    "favorite_food": "大麦パンと水",
+    "hobby": "弟子との対話、散歩、シンプルな生活",
+    "catchphrase": "「自分でコントロールできることだけに集中しな」",
+    "places": "ヒエラポリス（現トルコ）生まれ、ニコポリス（現ギリシャ）",
+    "family": "奴隷として生まれ、後に解放。晩年は一人の孤児を養育",
+    "birth": {
+      "raw": "50年頃",
+      "year": 50
+    },
+    "death": {
+      "raw": "135年頃",
+      "year": 135
+    },
+    "books": [
+      "語録（アリアノス記録）",
+      "提要（エンケイリディオン）",
+      "マルクス・アウレリウス：自省録"
+    ],
+    "ism": "ストア派",
+    "meigen": "「人を悩ませるのは、出来事ではなくそれについての考え方だ」",
+    "meigenNote": "出来事自体ではなく、それにどう反応するかが自分次第だという教え。"
+  },
+  {
+    "id": "buddha",
+    "name": "ブッダ（ゴータマ・シッダッタ）",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 7
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 3
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 7
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 8
+      }
+    },
+    "thought": "四聖諦・八正道・縁起・無常・空",
+    "favorite_food": "お粥と野菜",
+    "hobby": "瞑想（座禅）、弟子との対話、托鉢",
+    "catchphrase": "「それは本当に必要なのかな」",
+    "places": "ルンビニー（現ネパール）生まれ、マガダ国・ブッダガヤー、ヴァーラーナシー",
+    "family": "妻ヤショーダラー、息子ラーフラ（出家後は別離）",
+    "birth": {
+      "raw": "紀元前563年頃",
+      "year": -563
+    },
+    "death": {
+      "raw": "紀元前483年頃",
+      "year": -483
+    },
+    "books": [
+      "ブッダのことば（スッタニパータ）",
+      "ダンマパダ（法句経）",
+      "大般涅槃経",
+      "中阿含経",
+      "雑阿含経"
+    ],
+    "ism": "仏教",
+    "meigen": "「すべては移りゆく。怠らず努めよ」",
+    "meigenNote": "万物は無常であるから、その中で心を怠らず修養し続けなさいという最後の教え。"
+  },
+  {
+    "id": "confucius",
+    "name": "孔子",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "超越",
+        "score": 3
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 2
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 6
+      },
+      "static_dynamic": {
+        "tag": "静的",
+        "score": 3
+      }
+    },
+    "thought": "儒教・仁・礼・君子の道・正名",
+    "favorite_food": "蒸し魚と米",
+    "hobby": "音楽（琴）の演奏、礼儀の研究、弟子への教育",
+    "catchphrase": "「まず自分を修めることだよ」",
+    "places": "魯国（現中国・山東省曲阜）",
+    "family": "妻亓官氏、息子孔鯉",
+    "birth": {
+      "raw": "紀元前551年",
+      "year": -551
+    },
+    "death": {
+      "raw": "紀元前479年",
+      "year": -479
+    },
+    "books": [
+      "論語",
+      "大学",
+      "中庸",
+      "礼記",
+      "春秋"
+    ],
+    "ism": "儒教",
+    "meigen": "「己の欲せざる所は人に施すことなかれ」",
+    "meigenNote": "自分がされたくないことは、他人にもしてはいけないという教え。"
+  },
+  {
+    "id": "laozi",
+    "name": "老子",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 7
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 2
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 7
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 8
+      }
+    },
+    "thought": "道家思想・無為自然・道（タオ）・柔弱の哲学",
+    "favorite_food": "野草のお茶と山の水",
+    "hobby": "自然の中を歩く、沈黙、川を眺める",
+    "catchphrase": "「何もしないことが、一番の行動だよ」",
+    "places": "楚国（現中国・河南省）",
+    "family": "不明（伝説的人物とされる）",
+    "birth": {
+      "raw": "紀元前6世紀頃",
+      "year": -550
+    },
+    "death": {
+      "raw": "不明",
+      "year": null
+    },
+    "books": [
+      "老子（道徳経）",
+      "荘子（後継者の著作）",
+      "列子"
+    ],
+    "ism": "道家思想",
+    "meigen": "「道の道とすべきは、常の道に非ず」",
+    "meigenNote": "本当の道（タオ）は、言葉で説明しつくせるものではないという思想の出発点。"
+  },
+  {
+    "id": "zhuangzi",
+    "name": "荘子",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 8
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 7
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 8
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 9
+      }
+    },
+    "thought": "道家思想・万物斉同・逍遥遊・相対主義",
+    "favorite_food": "野草と川魚",
+    "hobby": "釣りをする、昼寝、蝶の夢を見る",
+    "catchphrase": "「お前は夢と現実の区別、本当につけられるの？」",
+    "places": "宋国（現中国・河南省・安徽省付近）",
+    "family": "妻が死んだとき歌を歌った（有名なエピソード）",
+    "birth": {
+      "raw": "紀元前369年頃",
+      "year": -369
+    },
+    "death": {
+      "raw": "紀元前286年頃",
+      "year": -286
+    },
+    "books": [
+      "荘子（内篇）",
+      "荘子（外篇）",
+      "老子",
+      "列子"
+    ],
+    "ism": "道家思想",
+    "meigen": "「私は夢の中で胡蝶となったのか、胡蝶が夢の中で私となったのか」",
+    "meigenNote": "夢と現実、自分と他者の境界すら定かではないという、万物斉同の思想。"
+  },
+  {
+    "id": "mencius",
+    "name": "孟子",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "超越",
+        "score": 3
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 2
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 6
+      },
+      "static_dynamic": {
+        "tag": "静的",
+        "score": 3
+      }
+    },
+    "thought": "儒教・性善説・仁義・王道政治・四端説",
+    "favorite_food": "豚肉の煮込み",
+    "hobby": "読書、弟子への教育、仁政の実践",
+    "catchphrase": "「人の心は、もともと善いんだよ」",
+    "places": "鄒国（現中国・山東省鄒城）",
+    "family": "孟母（孟母三遷の故事で有名）に育てられる。妻あり",
+    "birth": {
+      "raw": "紀元前372年頃",
+      "year": -372
+    },
+    "death": {
+      "raw": "紀元前289年頃",
+      "year": -289
+    },
+    "books": [
+      "孟子",
+      "四書（論語・孟子・大学・中庸）",
+      "礼記"
+    ],
+    "ism": "儒教（性善説）",
+    "meigen": "「惻隠の心は仁の端なり」",
+    "meigenNote": "人は生まれつき、他人を思いやる心の芽生えを持っているという性善説の根拠。"
+  },
+  {
+    "id": "xunzi",
+    "name": "荀子",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 6
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 2
+      },
+      "reason_experience": {
+        "tag": "理性",
+        "score": 4
+      },
+      "static_dynamic": {
+        "tag": "静的",
+        "score": 4
+      }
+    },
+    "thought": "儒教・性悪説・礼による矯正・王道と覇道・天の自然観",
+    "favorite_food": "穀物と野菜（質素な食事）",
+    "hobby": "礼の研究、弁論、各国諸侯への進言",
+    "catchphrase": "「人は生まれつき欲深い。だから礼が必要なんだ」",
+    "places": "趙国（現中国・山西省）生まれ、斉・楚などを遊歴",
+    "family": "弟子に韓非子・李斯（法家の創始者たち）",
+    "birth": {
+      "raw": "紀元前313年頃",
+      "year": -313
+    },
+    "death": {
+      "raw": "紀元前238年頃",
+      "year": -238
+    },
+    "books": [
+      "荀子",
+      "礼論",
+      "性悪篇"
+    ],
+    "ism": "儒教（性悪説）",
+    "meigen": "「人の性は悪、その善なる者は偽なり」",
+    "meigenNote": "人の本性は放っておけば悪に向かうため、礼による教育と矯正が必要だという教え。"
+  },
+  {
+    "id": "nagarjuna",
+    "name": "ナーガールジュナ（龍樹）",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 8
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 3
+      },
+      "reason_experience": {
+        "tag": "理性",
+        "score": 3
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 8
+      }
+    },
+    "thought": "中観派仏教・空（シュンヤター）・縁起・二諦説",
+    "favorite_food": "お粥と豆",
+    "hobby": "瞑想、仏典研究、論敵との討論",
+    "catchphrase": "「それって、独立して存在してるの？」",
+    "places": "南インド（アーンドラ地方）",
+    "family": "出家（家族不明）",
+    "birth": {
+      "raw": "150年頃",
+      "year": 150
+    },
+    "death": {
+      "raw": "250年頃",
+      "year": 250
+    },
+    "books": [
+      "中論",
+      "空七十論",
+      "十二門論",
+      "廻諍論",
+      "大智度論"
+    ],
+    "ism": "仏教（中観派・空の思想）",
+    "meigen": "「縁起なるものを、我らは空性と説く」",
+    "meigenNote": "すべてのものは他との関係の中でのみ存在し、それ自体で独立した実体はないという空の思想。"
+  },
+  {
+    "id": "wang_yangming",
+    "name": "王陽明",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 7
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 6
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 5
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 7
+      }
+    },
+    "thought": "陽明学・知行合一・心即理・致良知・万物一体の仁",
+    "favorite_food": "豆腐と野菜の汁物",
+    "hobby": "書道、武術の鍛錬、弟子との野外問答",
+    "catchphrase": "「考えたら、すぐ動け。知ることと行うことは同じだ」",
+    "places": "浙江省余姚（現中国）生まれ、各地を巡る",
+    "family": "妻あり。江西省での戦功で知られる",
+    "birth": {
+      "raw": "1472年",
+      "year": 1472
+    },
+    "death": {
+      "raw": "1529年",
+      "year": 1529
+    },
+    "books": [
+      "伝習録",
+      "王陽明全書",
+      "大学問"
+    ],
+    "ism": "陽明学",
+    "meigen": "「知は行の始めであり、行は知の成れるなり」",
+    "meigenNote": "本当に知っているならば、必ず行動が伴うはずだという知行合一の教え。"
+  },
+  {
+    "id": "augustine",
+    "name": "アウグスティヌス",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "超越",
+        "score": 1
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 2
+      },
+      "reason_experience": {
+        "tag": "理性",
+        "score": 3
+      },
+      "static_dynamic": {
+        "tag": "静的",
+        "score": 3
+      }
+    },
+    "thought": "原罪・恩寵・予定説・神の国vs地の国・時間論",
+    "favorite_food": "北アフリカ料理とワイン（回心前は美食家）",
+    "hobby": "祈り、神学著述、説教、修道院生活",
+    "catchphrase": "「神よ、あなたのために作られた我が心は、あなたの内に憩うまで安らわない」",
+    "places": "タガステ（現アルジェリア）生まれ、カルタゴ、ローマ、ヒッポ（現アルジェリア）",
+    "family": "内縁の妻（15年間）、息子アデオダトゥス",
+    "birth": {
+      "raw": "354年",
+      "year": 354
+    },
+    "death": {
+      "raw": "430年",
+      "year": 430
+    },
+    "books": [
+      "告白録",
+      "神の国",
+      "三位一体論",
+      "自由意志論",
+      "キリスト教の教え"
+    ],
+    "ism": "キリスト教神学（教父哲学）",
+    "meigen": "「主よ、私を清くしてください。ただし、今すぐではなく」",
+    "meigenNote": "改心を望みながらも、それを先延ばしにしていた自身の弱さを率直に告白した言葉。"
+  },
+  {
+    "id": "jesus",
+    "name": "イエス・キリスト",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "超越",
+        "score": 2
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 7
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 7
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 7
+      }
+    },
+    "thought": "愛の倫理・神の国・赦し・復活・隣人愛",
+    "favorite_food": "パンと魚、ブドウ酒",
+    "hobby": "祈り、民衆との対話、弟子たちと旅する",
+    "catchphrase": "「愛することで、すべては変わる」",
+    "places": "ベツレヘム生まれ、ガリラヤ・ナザレ、エルサレム（現イスラエル・パレスチナ）",
+    "family": "母マリア、養父ヨセフ。12弟子が家族のような存在",
+    "birth": {
+      "raw": "紀元前4年頃",
+      "year": -4
+    },
+    "death": {
+      "raw": "30年頃",
+      "year": 30
+    },
+    "books": [
+      "マタイによる福音書（山上の垂訓）",
+      "ヨハネによる福音書",
+      "ルカによる福音書",
+      "使徒言行録",
+      "ローマの信徒への手紙（パウロ）"
+    ],
+    "ism": "キリスト教",
+    "meigen": "「隣人を自分のように愛しなさい」",
+    "meigenNote": "すべての教えの中心にある、他者への愛の教え。"
+  },
+  {
+    "id": "muhammad",
+    "name": "ムハンマド",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "超越",
+        "score": 1
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 2
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 6
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 7
+      }
+    },
+    "thought": "イスラーム・唯一神（アッラー）・ウンマ（共同体）・ジハード",
+    "favorite_food": "デーツ（なつめやし）とヤギ乳",
+    "hobby": "瞑想（ヒラー山の洞窟）、商人として旅、民衆への説教",
+    "catchphrase": "「神の意志に委ねながら、精一杯生きる」",
+    "places": "メッカ（現サウジアラビア）生まれ、メディナへ聖遷",
+    "family": "最初の妻ハディージャ（25年間一夫一婦）、後に複数の妻、子6人",
+    "birth": {
+      "raw": "570年頃",
+      "year": 570
+    },
+    "death": {
+      "raw": "632年",
+      "year": 632
+    },
+    "books": [
+      "クルアーン（コーラン）",
+      "ハディース（言行録）集",
+      "シーラ（預言者伝記）",
+      "タフスィール（クルアーン注解）"
+    ],
+    "ism": "イスラーム",
+    "meigen": "「学問を求めることは、すべての信徒の義務である」",
+    "meigenNote": "知識を学び続けることを、信仰の実践として重んじる教え。"
+  },
+  {
+    "id": "aquinas",
+    "name": "トマス・アクィナス",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "超越",
+        "score": 2
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 2
+      },
+      "reason_experience": {
+        "tag": "理性",
+        "score": 2
+      },
+      "static_dynamic": {
+        "tag": "静的",
+        "score": 2
+      }
+    },
+    "thought": "スコラ哲学・自然神学・信仰と理性の調和・五つの道",
+    "favorite_food": "パンとワイン、シンプルな修道院食",
+    "hobby": "祈り、神学研究、アリストテレス研究",
+    "catchphrase": "「理性と信仰、矛盾しないんだよ」",
+    "places": "ロッカセッカ（現イタリア・ラツィオ州）生まれ、ナポリ・パリ・ケルン",
+    "family": "未婚（ドミニコ会修道士）",
+    "birth": {
+      "raw": "1225年頃",
+      "year": 1225
+    },
+    "death": {
+      "raw": "1274年",
+      "year": 1274
+    },
+    "books": [
+      "神学大全",
+      "対異教徒大全",
+      "存在と本質について",
+      "アリストテレス注解（命題論）",
+      "神学綱要"
+    ],
+    "ism": "スコラ哲学",
+    "meigen": "「恩寵は自然を破壊せず、これを完成する」",
+    "meigenNote": "信仰と理性は対立するものではなく、理性は信仰によって完成されるという考え。"
+  },
+  {
+    "id": "dogen",
+    "name": "道元",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 7
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 6
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 8
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 7
+      }
+    },
+    "thought": "只管打坐（しかんたざ）・修証一等・山水経・正法眼蔵",
+    "favorite_food": "粥と漬物（典座として料理も修行と考えた）",
+    "hobby": "坐禅、読経、自然（山）の中を歩く",
+    "catchphrase": "「ただ、坐ることだ。それが全てだ」",
+    "places": "京都生まれ、比叡山・宋（中国）・越前永平寺（現福井）",
+    "family": "出家（家族関係は早世により不明）",
+    "birth": {
+      "raw": "1200年",
+      "year": 1200
+    },
+    "death": {
+      "raw": "1253年",
+      "year": 1253
+    },
+    "books": [
+      "正法眼蔵",
+      "典座教訓",
+      "学道用心集",
+      "永平広録"
+    ],
+    "ism": "禅（曹洞宗）",
+    "meigen": "「只管打坐」",
+    "meigenNote": "悟りを得るための手段としてではなく、坐禅そのものが仏の姿だという教え。"
+  },
+  {
+    "id": "spinoza",
+    "name": "スピノザ",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 9
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 1
+      },
+      "reason_experience": {
+        "tag": "理性",
+        "score": 1
+      },
+      "static_dynamic": {
+        "tag": "静的",
+        "score": 1
+      }
+    },
+    "thought": "汎神論・「神即自然（Deus sive Natura）」・感情の幾何学",
+    "favorite_food": "ニシンとパン",
+    "hobby": "レンズ磨き（職人として生計）、昆虫観察、思索",
+    "catchphrase": "「感情に振り回されず、全体を見てみな」",
+    "places": "アムステルダム（現オランダ）",
+    "family": "未婚（ユダヤ教会から破門後、孤独に生きる）",
+    "birth": {
+      "raw": "1632年",
+      "year": 1632
+    },
+    "death": {
+      "raw": "1677年",
+      "year": 1677
+    },
+    "books": [
+      "エチカ（倫理学）",
+      "神学・政治論",
+      "知性改善論",
+      "国家論"
+    ],
+    "ism": "汎神論・合理主義",
+    "meigen": "「神即自然」",
+    "meigenNote": "神とは、この宇宙・自然そのものに他ならないという汎神論の思想。"
+  },
+  {
+    "id": "descartes",
+    "name": "デカルト",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "超越",
+        "score": 2
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 2
+      },
+      "reason_experience": {
+        "tag": "理性",
+        "score": 1
+      },
+      "static_dynamic": {
+        "tag": "静的",
+        "score": 3
+      }
+    },
+    "thought": "方法的懐疑・心身二元論・「われ思う、ゆえにわれあり」",
+    "favorite_food": "ホットチョコレートとパン",
+    "hobby": "暖炉の前での思索、天文学・数学の研究、午前中は布団で考える",
+    "catchphrase": "「まず疑ってみることだよ」",
+    "places": "ラ・エー（現フランス・アンドル＝エ＝ロワール）生まれ、オランダ各地、晩年はスウェーデン",
+    "family": "未婚。私生子フランシーヌ（5歳で死去）",
+    "birth": {
+      "raw": "1596年",
+      "year": 1596
+    },
+    "death": {
+      "raw": "1650年",
+      "year": 1650
+    },
+    "books": [
+      "方法序説",
+      "省察",
+      "哲学原理",
+      "情念論",
+      "精神指導の規則"
+    ],
+    "ism": "合理主義",
+    "meigen": "「我思う、ゆえに我あり」",
+    "meigenNote": "あらゆることを疑っても、疑っている自分の存在だけは疑いえないという思考の出発点。"
+  },
+  {
+    "id": "francis_bacon",
+    "name": "フランシス・ベーコン",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 7
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 3
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 9
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 7
+      }
+    },
+    "thought": "経験主義の祖・帰納法・イドラ論・「知は力なり」・科学革命",
+    "favorite_food": "ローストビーフとエール",
+    "hobby": "実験・観察、法律実務、宮廷政治",
+    "catchphrase": "「実際に試して確かめることが、知への道だよ」",
+    "places": "ロンドン（現イギリス）",
+    "family": "妻アリス・バーナム",
+    "birth": {
+      "raw": "1561年",
+      "year": 1561
+    },
+    "death": {
+      "raw": "1626年",
+      "year": 1626
+    },
+    "books": [
+      "ノヴム・オルガヌム（新機関）",
+      "学問の進歩",
+      "エセー",
+      "新アトランティス"
+    ],
+    "ism": "経験主義",
+    "meigen": "「知は力なり」",
+    "meigenNote": "自然を観察し理解することこそが、人間の力の源であるという経験主義の宣言。"
+  },
+  {
+    "id": "locke",
+    "name": "ロック",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 7
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 6
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 8
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 6
+      }
+    },
+    "thought": "経験論・社会契約論・自然権・所有権・寛容論",
+    "favorite_food": "エールビールとケーキ",
+    "hobby": "医学研究、旅行、書簡を書く",
+    "catchphrase": "「実際に経験したこと以外は、慎重に」",
+    "places": "リントン（現イギリス・サマセット）生まれ、オックスフォード、オランダ亡命を経てエセックス",
+    "family": "未婚",
+    "birth": {
+      "raw": "1632年",
+      "year": 1632
+    },
+    "death": {
+      "raw": "1704年",
+      "year": 1704
+    },
+    "books": [
+      "人間悟性論",
+      "統治二論",
+      "寛容についての書簡",
+      "教育についての考察"
+    ],
+    "ism": "経験論",
+    "meigen": "「人の心は白紙である」",
+    "meigenNote": "人は生まれつき知識を持たず、すべては経験によって書き込まれていくという考え。"
+  },
+  {
+    "id": "pascal",
+    "name": "パスカル",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "超越",
+        "score": 2
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 7
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 6
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 7
+      }
+    },
+    "thought": "パスカルの賭け・人間は考える葦・神の恩寵・キリスト教弁証",
+    "favorite_food": "パンとスープ（病弱で粗食）",
+    "hobby": "数学・物理の実験、修道院での瞑想、病気と向き合う",
+    "catchphrase": "「人間は考える葦だ。でも、それでいい」",
+    "places": "クレルモン＝フェラン（現フランス）生まれ、パリ、ポール＝ロワイヤル修道院",
+    "family": "生涯未婚。姉ジャクリーヌが修道女",
+    "birth": {
+      "raw": "1623年",
+      "year": 1623
+    },
+    "death": {
+      "raw": "1662年",
+      "year": 1662
+    },
+    "books": [
+      "パンセ（瞑想録）",
+      "プロヴァンシアル（地方人への手紙）",
+      "円錐曲線論",
+      "気圧について"
+    ],
+    "ism": "実存的キリスト教",
+    "meigen": "「人間は考える葦である」",
+    "meigenNote": "人間は宇宙の中では弱く儚い存在だが、考えることができる点に尊厳があるという言葉。"
+  },
+  {
+    "id": "leibniz",
+    "name": "ライプニッツ",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "超越",
+        "score": 3
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 2
+      },
+      "reason_experience": {
+        "tag": "理性",
+        "score": 2
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 7
+      }
+    },
+    "thought": "モナド論・予定調和・最善世界論・普遍数学・微積分の発明",
+    "favorite_food": "コーヒーとケーキ（多忙ゆえ立ち食いも多かった）",
+    "hobby": "数学・哲学・外交・歴史研究、各国の賢人への手紙",
+    "catchphrase": "「これはすべての可能世界の中で、最善の世界だ」",
+    "places": "ライプツィヒ（現ドイツ）生まれ、ハノーファー宮廷",
+    "family": "未婚",
+    "birth": {
+      "raw": "1646年",
+      "year": 1646
+    },
+    "death": {
+      "raw": "1716年",
+      "year": 1716
+    },
+    "books": [
+      "モナドロジー",
+      "形而上学叙説",
+      "人間悟性新論",
+      "神義論"
+    ],
+    "ism": "合理主義",
+    "meigen": "「これはありうる限り最善の世界である」",
+    "meigenNote": "神が創造したこの世界は、あらゆる可能性の中で最も調和の取れた世界だという思想。"
+  },
+  {
+    "id": "hume",
+    "name": "ヒューム",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 9
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 7
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 9
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 7
+      }
+    },
+    "thought": "懐疑的経験論・因果関係の批判・感情の倫理学",
+    "favorite_food": "ウィスキーとハギス",
+    "hobby": "料理をする、社交パーティー、読書",
+    "catchphrase": "「その因果関係、本当にあるの？」",
+    "places": "エディンバラ（現スコットランド）",
+    "family": "未婚",
+    "birth": {
+      "raw": "1711年",
+      "year": 1711
+    },
+    "death": {
+      "raw": "1776年",
+      "year": 1776
+    },
+    "books": [
+      "人間本性論",
+      "人間悟性研究",
+      "道徳原理研究",
+      "宗教の自然史"
+    ],
+    "ism": "経験論・懐疑論",
+    "meigen": "「理性は情念の奴隷である」",
+    "meigenNote": "人の行動を最終的に決めるのは理性ではなく、感情や欲求だという考え。"
+  },
+  {
+    "id": "rousseau",
+    "name": "ルソー",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 7
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 6
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 7
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 7
+      }
+    },
+    "thought": "一般意志・社会契約・自然に帰れ・エミール（教育論）",
+    "favorite_food": "ハーブティーと野菜",
+    "hobby": "植物採集、音楽作曲、自然の中を歩く",
+    "catchphrase": "「文明が人を複雑にしたんだよな」",
+    "places": "ジュネーヴ（現スイス）生まれ、パリ、亡命先のイギリスなど各地を転々",
+    "family": "内縁の妻テレーズ・ルヴァスール。子5人（全員孤児院に預けた、後に後悔）",
+    "birth": {
+      "raw": "1712年",
+      "year": 1712
+    },
+    "death": {
+      "raw": "1778年",
+      "year": 1778
+    },
+    "books": [
+      "社会契約論",
+      "人間不平等起源論",
+      "エミール",
+      "告白",
+      "孤独な散歩者の夢想"
+    ],
+    "ism": "社会契約論",
+    "meigen": "「人は自由なものとして生まれた。だが、いたるところで鎖につながれている」",
+    "meigenNote": "本来自由な人間が、社会の制度によって不自由にされている現実を指摘した言葉。"
+  },
+  {
+    "id": "voltaire",
+    "name": "ヴォルテール",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 6
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 7
+      },
+      "reason_experience": {
+        "tag": "理性",
+        "score": 3
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 8
+      }
+    },
+    "thought": "啓蒙主義・寛容・理性による批判・反教会・自由主義",
+    "favorite_food": "コーヒーとチョコレートケーキ",
+    "hobby": "執筆（80冊以上）、庭仕事・農業、サロンでの議論",
+    "catchphrase": "「自分の頭で考えることをやめないで」",
+    "places": "パリ生まれ、バスティーユ収監後、イギリス亡命、シレー、フェルネ（フランス・スイス国境）",
+    "family": "未婚（マダム・デュ・シャトレとの長年の関係）",
+    "birth": {
+      "raw": "1694年",
+      "year": 1694
+    },
+    "death": {
+      "raw": "1778年",
+      "year": 1778
+    },
+    "books": [
+      "カンディード",
+      "哲学書簡",
+      "哲学辞典",
+      "ザディグ",
+      "寛容論"
+    ],
+    "ism": "啓蒙思想",
+    "meigen": "「もし神が存在しないなら、発明する必要があるだろう」",
+    "meigenNote": "社会秩序や道徳の基盤として、神という観念が人間にとって必要だという考え。"
+  },
+  {
+    "id": "kant",
+    "name": "カント",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "超越",
+        "score": 2
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 1
+      },
+      "reason_experience": {
+        "tag": "理性",
+        "score": 2
+      },
+      "static_dynamic": {
+        "tag": "静的",
+        "score": 3
+      }
+    },
+    "thought": "純粋理性批判・定言命法・コペルニクス的転回・物自体",
+    "favorite_food": "コーヒーと黒パン",
+    "hobby": "規則正しい散歩（近所の人が時計代わりにした）、読書、天文学",
+    "catchphrase": "「その行動が、すべての人に当てはまるか考えてみて」",
+    "places": "ケーニヒスベルク（現ロシア・カリーニングラード）",
+    "family": "未婚（2度結婚を考えたが迷ううちに逃した）",
+    "birth": {
+      "raw": "1724年",
+      "year": 1724
+    },
+    "death": {
+      "raw": "1804年",
+      "year": 1804
+    },
+    "books": [
+      "純粋理性批判",
+      "実践理性批判",
+      "判断力批判",
+      "道徳形而上学の基礎づけ",
+      "永遠平和のために"
+    ],
+    "ism": "批判哲学（ドイツ観念論）",
+    "meigen": "「あなたの行動が、誰にでも当てはまる法則になるように行動しなさい」",
+    "meigenNote": "自分の行動が万人にとってのルールになったとしても成り立つかを基準に考える、道徳の原則（定言命法）。"
+  },
+  {
+    "id": "bentham",
+    "name": "ジェレミー・ベンサム",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 8
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 2
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 8
+      },
+      "static_dynamic": {
+        "tag": "静的",
+        "score": 5
+      }
+    },
+    "thought": "功利主義・最大多数の最大幸福・パノプティコン・快楽計算",
+    "favorite_food": "野菜と紅茶（健康的な食事を重視）",
+    "hobby": "法律改革の草案執筆、監獄設計、弟子への手紙",
+    "catchphrase": "「幸福を増やして、苦しみを減らす。それだけだよ」",
+    "places": "ロンドン（現イギリス）",
+    "family": "未婚",
+    "birth": {
+      "raw": "1748年",
+      "year": 1748
+    },
+    "death": {
+      "raw": "1832年",
+      "year": 1832
+    },
+    "books": [
+      "道徳と立法の原理序説",
+      "パノプティコン",
+      "功利主義（ミル著）",
+      "統治論断片"
+    ],
+    "ism": "功利主義",
+    "meigen": "「最大多数の最大幸福」",
+    "meigenNote": "社会にとって正しい行いとは、できるだけ多くの人にできるだけ大きな幸福をもたらすことだという考え。"
+  },
+  {
+    "id": "hegel",
+    "name": "ヘーゲル",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "超越",
+        "score": 4
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 2
+      },
+      "reason_experience": {
+        "tag": "理性",
+        "score": 2
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 10
+      }
+    },
+    "thought": "弁証法・絶対精神・歴史の自己展開・主人と奴隷",
+    "favorite_food": "ワインとソーセージ",
+    "hobby": "ワインを飲みながら仲間と議論する、新聞を読む",
+    "catchphrase": "「矛盾は解決じゃなくて、乗り越えるものだよ」",
+    "places": "シュトゥットガルト（現ドイツ）生まれ、イエナ、ベルリン大学",
+    "family": "妻マリー・フォン・トゥヒャー、息子3人",
+    "birth": {
+      "raw": "1770年",
+      "year": 1770
+    },
+    "death": {
+      "raw": "1831年",
+      "year": 1831
+    },
+    "books": [
+      "精神現象学",
+      "法の哲学",
+      "歴史哲学",
+      "論理学（大）",
+      "エンチクロペディー"
+    ],
+    "ism": "ドイツ観念論（弁証法）",
+    "meigen": "「理性的なものこそが現実的であり、現実的なものこそが理性的である」",
+    "meigenNote": "この世界の出来事や歴史は、理性の展開として捉えられるという思想。"
+  },
+  {
+    "id": "kierkegaard",
+    "name": "キェルケゴール",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "超越",
+        "score": 3
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 9
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 7
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 8
+      }
+    },
+    "thought": "実存の三段階（美的・倫理的・宗教的）・主体性・不安・反復",
+    "favorite_food": "コーヒーとデニッシュ",
+    "hobby": "コペンハーゲンの街を長時間散歩しながら思索",
+    "catchphrase": "「客観的な真理より、自分にとっての真理だ」",
+    "places": "コペンハーゲン（現デンマーク）",
+    "family": "婚約者レギーネ・オルセン（自ら破棄した）",
+    "birth": {
+      "raw": "1813年",
+      "year": 1813
+    },
+    "death": {
+      "raw": "1855年",
+      "year": 1855
+    },
+    "books": [
+      "あれか、これか",
+      "反復",
+      "不安の概念",
+      "死に至る病",
+      "哲学的断片"
+    ],
+    "ism": "実存主義（先駆）",
+    "meigen": "「人生は前向きにしか生きられないが、理解できるのは後ろ向きにだけだ」",
+    "meigenNote": "人生の意味は後になって初めて分かるものであり、それでも前へ進むしかないという言葉。"
+  },
+  {
+    "id": "schopenhauer",
+    "name": "ショーペンハウアー",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 7
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 3
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 6
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 7
+      }
+    },
+    "thought": "意志と表象・ペシミズム・盲目的意志・芸術による救済",
+    "favorite_food": "コーヒーとビーフステーキ",
+    "hobby": "フルート演奏、プードル犬との散歩（生涯の友）、読書",
+    "catchphrase": "「欲望から少し距離を置いてみな」",
+    "places": "ダンツィヒ（現ポーランド・グダニスク）生まれ、フランクフルト・アム・マイン",
+    "family": "未婚（女性不信で有名。母とも不仲）",
+    "birth": {
+      "raw": "1788年",
+      "year": 1788
+    },
+    "death": {
+      "raw": "1860年",
+      "year": 1860
+    },
+    "books": [
+      "意志と表象としての世界",
+      "幸福論（随感録）",
+      "読書について",
+      "女について",
+      "自殺について"
+    ],
+    "ism": "厭世哲学（意志の哲学）",
+    "meigen": "「人生は、苦悩と退屈の間を振り子のように揺れ動く」",
+    "meigenNote": "欲望が満たされなければ苦しみ、満たされればすぐに退屈するという、人生につきまとう不満足の構造。"
+  },
+  {
+    "id": "marx",
+    "name": "マルクス",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 10
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 3
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 7
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 9
+      }
+    },
+    "thought": "史的唯物論・階級闘争・資本主義批判・疎外論",
+    "favorite_food": "ビールとジャガイモスープ",
+    "hobby": "図書館での研究、ビリヤード、子どもと遊ぶ",
+    "catchphrase": "「誰が得してて、誰が損してるか見てみな」",
+    "places": "トリーア（現ドイツ）生まれ、パリ、ブリュッセル亡命後ロンドンで生涯を過ごす",
+    "family": "妻イェニー（貴族出身）、子7人（うち成人は3人）",
+    "birth": {
+      "raw": "1818年",
+      "year": 1818
+    },
+    "death": {
+      "raw": "1883年",
+      "year": 1883
+    },
+    "books": [
+      "資本論",
+      "共産党宣言（エンゲルスと共著）",
+      "経済学・哲学草稿",
+      "ドイツ・イデオロギー",
+      "ユダヤ人問題によせて"
+    ],
+    "ism": "史的唯物論",
+    "meigen": "「哲学者はこれまで世界を解釈してきたにすぎない。肝心なのは世界を変えることだ」",
+    "meigenNote": "哲学は世界を理解するだけでなく、実際に変革するための実践であるべきだという主張。"
+  },
+  {
+    "id": "j_s_mill",
+    "name": "ジョン・スチュアート・ミル",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 7
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 3
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 8
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 6
+      }
+    },
+    "thought": "功利主義・自由論・女性解放・代議制民主主義",
+    "favorite_food": "紅茶とスコーン",
+    "hobby": "植物採集（植物学の趣味）、議会での演説、著述",
+    "catchphrase": "「他人を傷つけない限り、自由に生きていい」",
+    "places": "ロンドン（現イギリス）",
+    "family": "妻ハリエット・テイラー（知的パートナーとして尊敬）",
+    "birth": {
+      "raw": "1806年",
+      "year": 1806
+    },
+    "death": {
+      "raw": "1873年",
+      "year": 1873
+    },
+    "books": [
+      "自由論",
+      "功利主義",
+      "論理学体系",
+      "女性の解放",
+      "代議制統治論"
+    ],
+    "ism": "功利主義",
+    "meigen": "「満足した豚であるより、不満足な人間である方がよい」",
+    "meigenNote": "快楽には質の違いがあり、低次の快楽より高次の快楽を求めるべきだという考え。"
+  },
+  {
+    "id": "nietzsche",
+    "name": "ニーチェ",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 9
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 8
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 7
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 9
+      }
+    },
+    "thought": "権力への意志・ニヒリズムの克服・永劫回帰・超人（ユーバーメンシュ）",
+    "favorite_food": "サラミとチーズ、薄いスープ",
+    "hobby": "山歩き（スイスアルプス）、ピアノ演奏、詩作",
+    "catchphrase": "「お前はそれで本当にいいのか？」",
+    "places": "レッケン（現ドイツ）生まれ、バーゼル大学、スイス・エンガディン（シルス＝マリア）、晩年はワイマール",
+    "family": "未婚（ルー・ザロメへの失恋が有名。後に精神崩壊）",
+    "birth": {
+      "raw": "1844年",
+      "year": 1844
+    },
+    "death": {
+      "raw": "1900年",
+      "year": 1900
+    },
+    "books": [
+      "ツァラトゥストラはこう言った",
+      "善悪の彼岸",
+      "道徳の系譜",
+      "悦ばしき知識",
+      "偶像の黄昏"
+    ],
+    "ism": "生の哲学",
+    "meigen": "「神は死んだ」",
+    "meigenNote": "近代において、絶対的な価値のよりどころだった神への信仰が失われてしまったという時代診断。"
+  },
+  {
+    "id": "william_james",
+    "name": "ウィリアム・ジェームズ",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 8
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 7
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 9
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 8
+      }
+    },
+    "thought": "プラグマティズム・意識の流れ・宗教的経験・真理の有用性",
+    "favorite_food": "コーヒーとアメリカンパイ",
+    "hobby": "登山（アジロンダック山）、絵を描く、弟との手紙",
+    "catchphrase": "「それが実際に役に立つかどうか、それが真理だよ」",
+    "places": "ニューヨーク生まれ、ハーバード大学（現アメリカ・マサチューセッツ州）",
+    "family": "妻アリス・ハウ・ギボンズ、子5人。弟は作家ヘンリー・ジェームズ",
+    "birth": {
+      "raw": "1842年",
+      "year": 1842
+    },
+    "death": {
+      "raw": "1910年",
+      "year": 1910
+    },
+    "books": [
+      "プラグマティズム",
+      "宗教的経験の諸相",
+      "心理学原理",
+      "真理の意味",
+      "根本的経験論"
+    ],
+    "ism": "プラグマティズム",
+    "meigen": "「信じることによって、それが真実になることがある」",
+    "meigenNote": "ある信念は、それを信じて行動することで初めて実現し、真実になりうるという考え。"
+  },
+  {
+    "id": "husserl",
+    "name": "フッサール",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "超越",
+        "score": 4
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 3
+      },
+      "reason_experience": {
+        "tag": "理性",
+        "score": 3
+      },
+      "static_dynamic": {
+        "tag": "静的",
+        "score": 5
+      }
+    },
+    "thought": "現象学・エポケー（判断停止）・志向性・生活世界・超越論的主観性",
+    "favorite_food": "コーヒーとパン",
+    "hobby": "徹底した思索と執筆（遺稿45000ページ以上）",
+    "catchphrase": "「まず、先入観をすべて括弧に入れてみよう」",
+    "places": "プロスニッツ（現チェコ）生まれ、ウィーン、ハレ、ゲッティンゲン、フライブルク大学",
+    "family": "妻マルヴィーネ、子3人",
+    "birth": {
+      "raw": "1859年",
+      "year": 1859
+    },
+    "death": {
+      "raw": "1938年",
+      "year": 1938
+    },
+    "books": [
+      "論理学研究",
+      "イデーン（純粋現象学序説）",
+      "デカルト的省察",
+      "危機（ヨーロッパ諸学の危機）",
+      "内的時間意識の現象学"
+    ],
+    "ism": "現象学",
+    "meigen": "「事象そのものへ」",
+    "meigenNote": "先入観を排し、意識に現れる事象をありのままに見つめ直そうという現象学の標語。"
+  },
+  {
+    "id": "bergson",
+    "name": "ベルクソン",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 8
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 3
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 8
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 9
+      }
+    },
+    "thought": "エラン・ヴィタル（生の躍動）・純粋持続・直観・記憶",
+    "favorite_food": "クロワッサンとカフェオレ",
+    "hobby": "文学を読む、ダンスを観る、思索",
+    "catchphrase": "「時間は測れるものじゃない、感じるものだよ」",
+    "places": "パリ（現フランス）",
+    "family": "妻ルイーズ・ノイバーガー、娘マルグリット",
+    "birth": {
+      "raw": "1859年",
+      "year": 1859
+    },
+    "death": {
+      "raw": "1941年",
+      "year": 1941
+    },
+    "books": [
+      "時間と自由",
+      "物質と記憶",
+      "創造的進化",
+      "道徳と宗教の二源泉",
+      "思想と動くもの"
+    ],
+    "ism": "生の哲学",
+    "meigen": "「持続とは、過去が現在へと絶えず食い込んでいくことである」",
+    "meigenNote": "時間は時計で計れる均一な単位ではなく、過去を蓄積しながら流れ続ける『持続』だという考え。"
+  },
+  {
+    "id": "heidegger",
+    "name": "ハイデガー",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 8
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 7
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 7
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 8
+      }
+    },
+    "thought": "存在論・現存在（ダーザイン）・死への存在・被投性・道具連関",
+    "favorite_food": "黒パンとソーセージ、黒い森のビール",
+    "hobby": "黒い森を歩く、山小屋での執筆、スキー",
+    "catchphrase": "「いつかは死ぬ。それを忘れてないか？」",
+    "places": "メスキルヒ（現ドイツ）生まれ、フライブルク大学、トートナウベルク山小屋",
+    "family": "妻エルフリーデ、息子2人（ハンナ・アーレントとの関係でも有名）",
+    "birth": {
+      "raw": "1889年",
+      "year": 1889
+    },
+    "death": {
+      "raw": "1976年",
+      "year": 1976
+    },
+    "books": [
+      "存在と時間",
+      "形而上学入門",
+      "ヒューマニズムについて",
+      "技術への問い",
+      "芸術作品の根源"
+    ],
+    "ism": "存在論・実存主義",
+    "meigen": "「言葉は存在の家である」",
+    "meigenNote": "人間は言葉を通してのみ、存在そのものと出会うことができるという思想。"
+  },
+  {
+    "id": "wittgenstein",
+    "name": "ウィトゲンシュタイン",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 8
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 7
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 6
+      },
+      "static_dynamic": {
+        "tag": "静的",
+        "score": 4
+      }
+    },
+    "thought": "言語ゲーム・意味の使用理論・「語り得ないことには沈黙を」",
+    "favorite_food": "バターのトーストとコーヒー",
+    "hobby": "建築設計（妹のために家を設計）、口笛を吹く、映画鑑賞",
+    "catchphrase": "「言葉にできないことについては、黙ってるしかない」",
+    "places": "ウィーン（現オーストリア）生まれ、ケンブリッジ大学（現イギリス）",
+    "family": "未婚（同性愛者だったとされる）",
+    "birth": {
+      "raw": "1889年",
+      "year": 1889
+    },
+    "death": {
+      "raw": "1951年",
+      "year": 1951
+    },
+    "books": [
+      "論理哲学論考",
+      "哲学探究",
+      "確実性について",
+      "青色本・茶色本",
+      "文化と価値"
+    ],
+    "ism": "分析哲学（言語哲学）",
+    "meigen": "「語りえぬものについては、沈黙しなければならない」",
+    "meigenNote": "言葉で明確に語れる範囲には限界があり、その外側については語るべきではないという結論。"
+  },
+  {
+    "id": "arendt",
+    "name": "ハンナ・アーレント",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 6
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 7
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 6
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 7
+      }
+    },
+    "thought": "全体主義の起源・活動的生（ビタ・アクティヴァ）・悪の陳腐さ・公共空間",
+    "favorite_food": "コーヒーとタバコ（ヘビースモーカー）",
+    "hobby": "詩を書く、友人との議論、思想の執筆",
+    "catchphrase": "「悪は特別な怪物がするんじゃない、考えない普通の人がするんだよ」",
+    "places": "リンデン（現ドイツ）生まれ、ハイデルベルク、パリ亡命後ニューヨーク",
+    "family": "最初の夫グンター・シュテルン。後に哲学者ハインリヒ・ブリュッヒャーと再婚",
+    "birth": {
+      "raw": "1906年",
+      "year": 1906
+    },
+    "death": {
+      "raw": "1975年",
+      "year": 1975
+    },
+    "books": [
+      "全体主義の起源",
+      "人間の条件",
+      "イェルサレムのアイヒマン",
+      "革命について",
+      "過去と未来の間"
+    ],
+    "ism": "政治哲学",
+    "meigen": "「悪は、特別な怪物ではなく、ただ考えることをやめた凡人によってなされる」",
+    "meigenNote": "アイヒマン裁判を傍聴して見出した、悪とは特別な狂気ではなく思考停止から生まれるという洞察。"
+  },
+  {
+    "id": "merleau_ponty",
+    "name": "メルロ＝ポンティ",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 8
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 6
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 8
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 7
+      }
+    },
+    "thought": "身体論・知覚の現象学・間主観性・肉（シェアール）の哲学",
+    "favorite_food": "フランスパンとワイン",
+    "hobby": "絵画鑑賞（セザンヌを愛した）、思索、カフェでの議論",
+    "catchphrase": "「世界は、まず身体で感じるんだよ」",
+    "places": "ロシュフォール（現フランス）生まれ、パリ・コレージュ・ド・フランス",
+    "family": "妻スザンヌ・ジョリー、娘マリアンヌ",
+    "birth": {
+      "raw": "1908年",
+      "year": 1908
+    },
+    "death": {
+      "raw": "1961年",
+      "year": 1961
+    },
+    "books": [
+      "知覚の現象学",
+      "行動の構造",
+      "見えるものと見えないもの",
+      "眼と精神",
+      "シーニュ（記号）"
+    ],
+    "ism": "身体論的現象学",
+    "meigen": "「身体こそが、世界を知覚する主体である」",
+    "meigenNote": "人は頭の中の意識だけでなく、身体を通して世界を経験し理解しているという思想。"
+  },
+  {
+    "id": "sartre",
+    "name": "サルトル",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 9
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 8
+      },
+      "reason_experience": {
+        "tag": "理性",
+        "score": 4
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 8
+      }
+    },
+    "thought": "実存主義・「実存は本質に先立つ」・自由と責任・アンガジュマン",
+    "favorite_food": "カフェのコーヒーとクロワッサン",
+    "hobby": "カフェでの執筆、映画鑑賞、パイプを吸いながら哲学",
+    "catchphrase": "「つまり、お前が選ぶんだよ」",
+    "places": "パリ（現フランス）",
+    "family": "生涯のパートナーはボーヴォワール（正式には結婚せず）",
+    "birth": {
+      "raw": "1905年",
+      "year": 1905
+    },
+    "death": {
+      "raw": "1980年",
+      "year": 1980
+    },
+    "books": [
+      "実存主義とは何か",
+      "存在と無",
+      "嘔吐",
+      "自由への道（三部作）",
+      "弁証法的理性批判"
+    ],
+    "ism": "実存主義",
+    "meigen": "「実存は本質に先立つ」",
+    "meigenNote": "人間はあらかじめ決められた本質を持たずに生まれ、自らの選択によって自分自身を作り上げていくという考え。"
+  },
+  {
+    "id": "beauvoir",
+    "name": "ボーヴォワール",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 8
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 8
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 7
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 8
+      }
+    },
+    "thought": "フェミニズム・「女は生まれるのでなく、なるのだ」・実存主義・他者論",
+    "favorite_food": "カフェのオムレツとワイン",
+    "hobby": "執筆、旅行（世界各地を旅した）、友人との議論",
+    "catchphrase": "「あなたはそのままでいなくていい、なりたいものになれる」",
+    "places": "パリ（現フランス）",
+    "family": "生涯のパートナーはサルトル（正式には結婚せず）",
+    "birth": {
+      "raw": "1908年",
+      "year": 1908
+    },
+    "death": {
+      "raw": "1986年",
+      "year": 1986
+    },
+    "books": [
+      "第二の性",
+      "老い",
+      "他者は地獄ではない",
+      "招かれた女",
+      "人間はみな死すべき存在"
+    ],
+    "ism": "実存主義・フェミニズム",
+    "meigen": "「人は女に生まれるのではない、女になるのだ」",
+    "meigenNote": "『女らしさ』は生まれつきのものではなく、社会によって作られるものだという指摘。"
+  },
+  {
+    "id": "camus",
+    "name": "カミュ",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 9
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 7
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 8
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 7
+      }
+    },
+    "thought": "不条理の哲学・反抗・シーシュポスの神話・地中海的ヒューマニズム",
+    "favorite_food": "コーヒーとタバコ、アルジェリアのクスクス",
+    "hobby": "サッカー（元ゴールキーパー）、執筆、演劇",
+    "catchphrase": "「それでも続けるしかないんだよな」",
+    "places": "モンドヴィ（現アルジェリア）生まれ、アルジェ、パリ",
+    "family": "妻フランシーヌ・ファウル、双子（交通事故で45歳で急死）",
+    "birth": {
+      "raw": "1913年",
+      "year": 1913
+    },
+    "death": {
+      "raw": "1960年",
+      "year": 1960
+    },
+    "books": [
+      "異邦人",
+      "シーシュポスの神話",
+      "ペスト",
+      "反抗的人間",
+      "最初の人間"
+    ],
+    "ism": "不条理の哲学",
+    "meigen": "「本当に重大な哲学の問題は一つしかない。自殺の問題である」",
+    "meigenNote": "人生に意味があるかを問う前に、それでも生きる価値があるのかを問うことが哲学の出発点だという主張。"
+  },
+  {
+    "id": "nishida",
+    "name": "西田幾多郎",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 7
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 4
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 8
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 8
+      }
+    },
+    "thought": "純粋経験・絶対矛盾的自己同一・場所の論理・無の哲学",
+    "favorite_food": "豆腐と味噌汁（質素な和食）",
+    "hobby": "坐禅、山を歩く、友人への手紙を書く",
+    "catchphrase": "「働くことの中に、考えることがある」",
+    "places": "石川県かほく市（旧河北郡宇ノ気町）生まれ、京都大学（西田哲学の拠点）",
+    "family": "妻寿美、子8人（多くが早世）",
+    "birth": {
+      "raw": "1870年",
+      "year": 1870
+    },
+    "death": {
+      "raw": "1945年",
+      "year": 1945
+    },
+    "books": [
+      "善の研究",
+      "働くものから見るものへ",
+      "哲学の根本問題",
+      "無の自覚的限定",
+      "場所"
+    ],
+    "ism": "京都学派",
+    "meigen": "「善とは、人格の実現である」",
+    "meigenNote": "本当の善とは、規則を守ることではなく、自分の人格を実現しきることにあるという考え。"
+  },
+  {
+    "id": "foucault",
+    "name": "フーコー",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 9
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 8
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 7
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 9
+      }
+    },
+    "thought": "知の考古学・権力と監視・生権力・主体の系譜学・性の歴史",
+    "favorite_food": "ワインとチーズ（美食家）",
+    "hobby": "アーカイブ（文書館）での歴史調査、日本文化への関心",
+    "catchphrase": "「それが『正常』と呼ばれるようになった経緯を、調べてみな」",
+    "places": "ポワティエ（現フランス）生まれ、パリ・コレージュ・ド・フランス",
+    "family": "生涯のパートナー ダニエル・ドゥフェール",
+    "birth": {
+      "raw": "1926年",
+      "year": 1926
+    },
+    "death": {
+      "raw": "1984年",
+      "year": 1984
+    },
+    "books": [
+      "狂気の歴史",
+      "監獄の誕生（監視と処罰）",
+      "知の考古学",
+      "言葉と物",
+      "性の歴史"
+    ],
+    "ism": "ポスト構造主義",
+    "meigen": "「知は権力であり、権力は知である」",
+    "meigenNote": "知識と権力は切り離せず、何が『正常』とされるかは、その時代の権力関係によって作られるという指摘。"
+  },
+  {
+    "id": "derrida",
+    "name": "デリダ",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 9
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 8
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 6
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 9
+      }
+    },
+    "thought": "脱構築・差延（ディフェランス）・テキストの外部はない・ロゴス中心主義批判",
+    "favorite_food": "コーヒーとタバコ",
+    "hobby": "テキストを精密に読む、友人への長い手紙、インタビュー",
+    "catchphrase": "「その言葉の意味、本当に一つだと思う？」",
+    "places": "エル・ビアール（現アルジェリア）生まれ、パリ高等師範学校",
+    "family": "妻マルグリット・オクチュリエ、子2人",
+    "birth": {
+      "raw": "1930年",
+      "year": 1930
+    },
+    "death": {
+      "raw": "2004年",
+      "year": 2004
+    },
+    "books": [
+      "グラマトロジーについて",
+      "声と現象",
+      "散種",
+      "法の力",
+      "友愛のポリティックス"
+    ],
+    "ism": "ポスト構造主義（脱構築）",
+    "meigen": "「テキストの外部はない」",
+    "meigenNote": "あらゆる意味はテキスト（文脈）の中でしか成り立たず、絶対的に確定した意味などないという脱構築の立場。"
+  },
+  {
+    "id": "kukai",
+    "name": "空海",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 6
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 3
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 8
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 7
+      }
+    },
+    "thought": "真言密教・即身成仏・大日如来・曼荼羅・声字実相",
+    "favorite_food": "精進料理（特に胡麻豆腐）",
+    "hobby": "書道（三筆のひとり）、密教修法、山岳修行",
+    "catchphrase": "「この身このまま、仏になれる」",
+    "places": "讃岐国（現香川県）生まれ、高野山（現和歌山）・東寺（現京都）",
+    "family": "出家（家族不明）",
+    "birth": {
+      "raw": "774年",
+      "year": 774
+    },
+    "death": {
+      "raw": "835年",
+      "year": 835
+    },
+    "books": [
+      "十住心論",
+      "声字実相義",
+      "即身成仏義",
+      "秘蔵宝鑰",
+      "三教指帰"
+    ],
+    "ism": "真言密教",
+    "meigen": "「即身成仏」",
+    "meigenNote": "特別な来世を待たずとも、この身このままで仏になることができるという密教の教え。"
+  },
+  {
+    "id": "saicho",
+    "name": "最澄",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "超越",
+        "score": 4
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 2
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 5
+      },
+      "static_dynamic": {
+        "tag": "静的",
+        "score": 4
+      }
+    },
+    "thought": "天台宗・法華経・一切衆生悉有仏性・四宗融合",
+    "favorite_food": "精進料理（茶を日本に広めた）",
+    "hobby": "比叡山での修行、唐への留学、弟子の育成",
+    "catchphrase": "「誰でも、仏になれる。それがお釈迦様の教えだ」",
+    "places": "近江国（現滋賀県）生まれ、比叡山延暦寺（現滋賀）",
+    "family": "出家（弟子に円仁・円珍など）",
+    "birth": {
+      "raw": "767年",
+      "year": 767
+    },
+    "death": {
+      "raw": "822年",
+      "year": 822
+    },
+    "books": [
+      "山家学生式",
+      "顕戒論",
+      "法華秀句",
+      "守護国界章"
+    ],
+    "ism": "天台宗",
+    "meigen": "「一隅を照らす、これすなわち国宝なり」",
+    "meigenNote": "目立たない場所であっても、自分の持ち場を誠実に照らす人こそが国の宝であるという教え。"
+  },
+  {
+    "id": "honen",
+    "name": "法然",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "超越",
+        "score": 2
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 2
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 7
+      },
+      "static_dynamic": {
+        "tag": "静的",
+        "score": 4
+      }
+    },
+    "thought": "浄土宗・専修念仏・南無阿弥陀仏・選択本願念仏集",
+    "favorite_food": "粥と梅干し",
+    "hobby": "念仏を唱える、民衆への布教、弟子との対話",
+    "catchphrase": "「念仏、ただ念仏。それだけでいい」",
+    "places": "美作国（現岡山県）生まれ、比叡山、京都・黒谷・知恩院",
+    "family": "出家（弟子に親鸞・証空など）",
+    "birth": {
+      "raw": "1133年",
+      "year": 1133
+    },
+    "death": {
+      "raw": "1212年",
+      "year": 1212
+    },
+    "books": [
+      "選択本願念仏集",
+      "一枚起請文",
+      "浄土宗略抄",
+      "法然上人絵伝"
+    ],
+    "ism": "浄土宗",
+    "meigen": "「ただ念仏して、弥陀にたすけられまいらすべし」",
+    "meigenNote": "難しい修行ではなく、ただ『南無阿弥陀仏』と称えることだけで救われるという専修念仏の教え。"
+  },
+  {
+    "id": "shinran",
+    "name": "親鸞",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "超越",
+        "score": 2
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 8
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 8
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 6
+      }
+    },
+    "thought": "浄土真宗・他力本願・悪人正機・非僧非俗・自然法爾",
+    "favorite_food": "麦飯と味噌汁（民衆と同じ食卓）",
+    "hobby": "念仏、妻帯・肉食（非僧非俗を実践）、和讃を詠む",
+    "catchphrase": "「善人でさえ往生できる。悪人はなおさらだ」",
+    "places": "京都生まれ、越後（現新潟）流罪後、関東（常陸国）布教、晩年は京都",
+    "family": "妻恵信尼（俗名玉日とも）、子6人",
+    "birth": {
+      "raw": "1173年",
+      "year": 1173
+    },
+    "death": {
+      "raw": "1263年",
+      "year": 1263
+    },
+    "books": [
+      "教行信証",
+      "歎異抄（唯円著）",
+      "正信偈",
+      "浄土和讃",
+      "高僧和讃"
+    ],
+    "ism": "浄土真宗",
+    "meigen": "「善人なおもて往生を遂ぐ、いわんや悪人をや」",
+    "meigenNote": "自分の力に頼らず阿弥陀仏にすがる悪人こそが、実は最も救いにふさわしいという悪人正機の教え。"
+  },
+  {
+    "id": "nichiren",
+    "name": "日蓮",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "超越",
+        "score": 3
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 3
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 6
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 8
+      }
+    },
+    "thought": "日蓮宗・法華経絶対主義・南無妙法蓮華経・立正安国論",
+    "favorite_food": "粗食（塩・梅・野菜）",
+    "hobby": "読経・題目を唱える、辻説法、幕府への諫暁状を書く",
+    "catchphrase": "「日本を救うのは、この法華経しかない」",
+    "places": "安房国（現千葉県）生まれ、鎌倉、伊豆・佐渡流罪後、身延山（現山梨）",
+    "family": "出家（弟子に日興・日朗など六老僧）",
+    "birth": {
+      "raw": "1222年",
+      "year": 1222
+    },
+    "death": {
+      "raw": "1282年",
+      "year": 1282
+    },
+    "books": [
+      "立正安国論",
+      "開目抄",
+      "観心本尊抄",
+      "撰時抄",
+      "日蓮遺文集"
+    ],
+    "ism": "日蓮宗",
+    "meigen": "「南無妙法蓮華経」",
+    "meigenNote": "この題目を唱えることに、法華経のすべての功徳が込められているという教え。"
+  },
+  {
+    "id": "ikkyu",
+    "name": "一休宗純",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 9
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 9
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 9
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 9
+      }
+    },
+    "thought": "臨済禅・反形式主義・狂詩・即興・生死一如",
+    "favorite_food": "酒と魚（禁忌を破ることで形式主義を批判）",
+    "hobby": "詩を詠む、酒を飲む、女性と交わる、髑髏を持って街を歩く",
+    "catchphrase": "「地獄も極楽も、ここにあるんだよ」",
+    "places": "京都生まれ、大徳寺、大阪・堺、晩年は酬恩庵（現京都府京田辺）",
+    "family": "後小松天皇の落胤とも。晩年に盲目の女性・森女と深く愛し合う",
+    "birth": {
+      "raw": "1394年",
+      "year": 1394
+    },
+    "death": {
+      "raw": "1481年",
+      "year": 1481
+    },
+    "books": [
+      "狂雲集",
+      "骸骨",
+      "自戒集",
+      "一休骸骨（死の瞑想）"
+    ],
+    "ism": "禅（臨済宗）",
+    "meigen": "「有漏路より無漏路へ帰る一休み、雨降らば降れ風吹かば吹け」",
+    "meigenNote": "迷いの世界から悟りの世界へのひと休みに過ぎないこの人生、なるようになれ、という飄々とした境地。"
+  },
+  {
+    "id": "motoori",
+    "name": "本居宣長",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 7
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 9
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 7
+      },
+      "static_dynamic": {
+        "tag": "静的",
+        "score": 5
+      }
+    },
+    "thought": "国学・もののあわれ・大和心・漢意批判・古事記研究",
+    "favorite_food": "白飯と魚（質素な和食）",
+    "hobby": "古典研究（35年かけて古事記伝を執筆）、和歌を詠む、医業",
+    "catchphrase": "「桜散るとき、胸が痛くなる。それが日本の心だよ」",
+    "places": "伊勢国松坂（現三重県松阪）",
+    "family": "妻かつ、子4人",
+    "birth": {
+      "raw": "1730年",
+      "year": 1730
+    },
+    "death": {
+      "raw": "1801年",
+      "year": 1801
+    },
+    "books": [
+      "古事記伝",
+      "源氏物語玉の小櫛",
+      "玉勝間",
+      "うひ山ふみ",
+      "石上私淑言"
+    ],
+    "ism": "国学",
+    "meigen": "「もののあはれ」",
+    "meigenNote": "理屈ではなく、物事に触れて心が動かされる、その感受性こそが日本人の心の本質だという考え。"
+  },
+  {
+    "id": "shoin",
+    "name": "吉田松陰",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "超越",
+        "score": 4
+      },
+      "universal_individual": {
+        "tag": "個別",
+        "score": 7
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 7
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 10
+      }
+    },
+    "thought": "尊王攘夷・知行合一・一君万民・志士の精神・松下村塾",
+    "favorite_food": "粗食（質素を美徳とした）",
+    "hobby": "読書（獄中でも300冊以上読んだ）、弟子への手紙、各地を遊歴",
+    "catchphrase": "「今すぐ動け。考えるのは動きながらでいい」",
+    "places": "長州藩（現山口県萩）",
+    "family": "未婚（処刑時29歳）。弟子に高杉晋作・伊藤博文・山縣有朋",
+    "birth": {
+      "raw": "1830年",
+      "year": 1830
+    },
+    "death": {
+      "raw": "1859年",
+      "year": 1859
+    },
+    "books": [
+      "講孟余話",
+      "留魂録",
+      "幽囚録",
+      "松下村塾記",
+      "吉田松陰全集"
+    ],
+    "ism": "尊王攘夷思想",
+    "meigen": "「至誠にして動かざる者は、未だこれあらざるなり」",
+    "meigenNote": "誠を尽くして人に接すれば、動かされない人はいないという、行動と誠実さを重んじる教え。"
+  },
+  {
+    "id": "fukuzawa",
+    "name": "福沢諭吉",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 7
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 4
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 8
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 8
+      }
+    },
+    "thought": "独立自尊・天は人の上に人を造らず・実学・文明開化・脱亜論",
+    "favorite_food": "牛鍋と日本酒（文明開化の象徴として牛肉を積極的に食べた）",
+    "hobby": "翻訳・著述、慶應義塾の経営、西洋文明の研究",
+    "catchphrase": "「学問しない奴は、損するよ」",
+    "places": "大坂（現大阪）生まれ、中津藩（現大分）、慶應義塾（現東京）",
+    "family": "妻錦、子9人",
+    "birth": {
+      "raw": "1835年",
+      "year": 1835
+    },
+    "death": {
+      "raw": "1901年",
+      "year": 1901
+    },
+    "books": [
+      "学問のすゝめ",
+      "文明論之概略",
+      "福翁自伝",
+      "西洋事情",
+      "脱亜論"
+    ],
+    "ism": "啓蒙思想（明治）",
+    "meigen": "「天は人の上に人を造らず、人の下に人を造らず」",
+    "meigenNote": "すべての人間は生まれながらに平等であるという、『学問のすゝめ』冒頭の有名な一節。"
+  },
+  {
+    "id": "suzuki_daisetz",
+    "name": "鈴木大拙",
+    "axes": {
+      "transcend_immanent": {
+        "tag": "内在",
+        "score": 8
+      },
+      "universal_individual": {
+        "tag": "普遍",
+        "score": 4
+      },
+      "reason_experience": {
+        "tag": "経験",
+        "score": 9
+      },
+      "static_dynamic": {
+        "tag": "動的",
+        "score": 7
+      }
+    },
+    "thought": "禅・無心・即非の論理・東洋的無・霊性的日本の建設",
+    "favorite_food": "シンプルな和食と番茶",
+    "hobby": "坐禅、英文著述、世界各地での講演旅行",
+    "catchphrase": "「考えるより先に、ただ在ることだ」",
+    "places": "金沢（現石川県）生まれ、鎌倉、米国各大学、晩年は東京・鎌倉",
+    "family": "妻ビアトリス（アメリカ人）。禅を西洋に広めた",
+    "birth": {
+      "raw": "1870年",
+      "year": 1870
+    },
+    "death": {
+      "raw": "1966年",
+      "year": 1966
+    },
+    "books": [
+      "禅と日本文化",
+      "日本的霊性",
+      "禅学への道（英語原著）",
+      "東洋的な見方",
+      "無心ということ"
+    ],
+    "ism": "禅（世界への紹介者）",
+    "meigen": "「禅とは、特別なことではなく、日常のふるまいそのものである」",
+    "meigenNote": "悟りは特別な体験としてではなく、普段の生活の立ち居振る舞いの中にこそあるという考え。"
+  }
+]

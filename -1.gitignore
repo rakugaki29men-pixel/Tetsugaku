@@ -1,0 +1,9 @@
+# 依存パッケージ（Render側でnpm installするので不要）
+node_modules/
+
+# 環境変数ファイル（APIキーが入っているので絶対にアップロードしない）
+.env
+
+# OS・エディタが自動生成するファイル
+.DS_Store
+*.log
