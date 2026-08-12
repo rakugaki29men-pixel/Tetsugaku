@@ -73,7 +73,7 @@ app.get("/api/philosophers", (req, res) => {
 // ---------------------------------------------------------------------------
 app.post("/api/chat", async (req, res) => {
   try {
-    const { philosopherId, mode = "casual", toneMode = "standard", userTopic, userProfile, history = [], message } = req.body;
+    const { philosopherId, mode = "casual", toneMode = "standard", enableSearch, userTopic, userProfile, history = [], message } = req.body;
 
     if (!message || typeof message !== "string") {
       return res.status(400).json({ error: "message は必須です。" });
@@ -102,7 +102,11 @@ app.post("/api/chat", async (req, res) => {
       { role: "user", content: message },
     ];
 
-    const reply = await callClaude(systemPrompt, messages);
+    // 記事URLなど、話題の内容をAIに調べてもらいたい場合だけWeb検索を有効にする
+    // （毎回検索するとコストがかさむので、フラグが立った時だけ）。
+    const reply = enableSearch
+      ? await callClaudeWithSearch(systemPrompt, messages)
+      : await callClaude(systemPrompt, messages);
     res.json({ reply });
   } catch (err) {
     console.error("chat error:", err);
