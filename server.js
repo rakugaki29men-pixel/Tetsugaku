@@ -139,6 +139,74 @@ async function callClaude(systemPrompt, messages) {
   return textBlock ? textBlock.text : "";
 }
 
+// Web検索ツールを有効にした呼び出し。Web検索はAnthropic側（サーバーサイド）で
+// 実行されるので、こちらで検索結果を受け渡すような複雑なやり取りは不要。
+// レスポンスには複数のtextブロックが混ざることがあるので、それらを結合して返す。
+async function callClaudeWithSearch(systemPrompt, messages) {
+  const response = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": ANTHROPIC_API_KEY,
+      "anthropic-version": "2023-06-01",
+    },
+    body: JSON.stringify({
+      model: MODEL,
+      max_tokens: 1000,
+      system: systemPrompt,
+      messages,
+      tools: [{ type: "web_search_20250305", name: "web_search" }],
+    }),
+  });
+
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`Anthropic API error (${response.status}): ${errText}`);
+  }
+
+  const data = await response.json();
+  const textBlocks = (data.content || []).filter((b) => b.type === "text").map((b) => b.text);
+  return textBlocks.join("\n");
+}
+
+// ---------------------------------------------------------------------------
+// GET /api/trending-topics
+// 返り値: { topics: [{ headline, summary }, ...] }
+// 今話題になっているニュースをAIにWeb検索させ、哲学的な会話のきっかけになりそうな
+// トピックを3つ返す。トピック選択画面の「今話題になってること」で使う。
+// ---------------------------------------------------------------------------
+const TRENDING_TOPICS_SYSTEM_PROMPT = `あなたは、日本語のニュースから今話題になっている出来事を調べるアシスタントです。
+web検索を使って、直近話題になっているニュースや出来事を3つ探してください。
+できれば、倫理・社会・生き方など、哲学的な会話のきっかけになりそうな話題を優先してください
+（芸能ゴシップやスポーツの試合結果だけの話題は避け、社会的な意味合いのある話題を選ぶこと）。
+
+見つけたら、次のJSON形式で **JSONのみ** を出力してください（説明文・前置き・コードブロックの記法は一切つけないこと）：
+
+{
+  "topics": [
+    { "headline": "短い見出し（15〜20文字程度）", "summary": "1文程度の補足説明" }
+  ]
+}`;
+
+app.get("/api/trending-topics", async (req, res) => {
+  try {
+    const raw = await callClaudeWithSearch(TRENDING_TOPICS_SYSTEM_PROMPT, [
+      { role: "user", content: "今話題になっているニュースを3つ教えて。" },
+    ]);
+    let parsed;
+    try {
+      const cleaned = raw.replace(/```json|```/g, "").trim();
+      parsed = JSON.parse(cleaned);
+    } catch (e) {
+      parsed = { topics: [] };
+    }
+    res.json(parsed);
+  } catch (err) {
+    console.error("trending-topics error:", err);
+    res.status(500).json({ error: "サーバー内部でエラーが発生しました。" });
+  }
+});
+
 // ---------------------------------------------------------------------------
 // POST /api/summarize
 // body: { transcript: string, toneMode?: string }  // 会話ログをテキスト化したもの
