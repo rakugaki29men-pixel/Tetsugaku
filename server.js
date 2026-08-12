@@ -84,7 +84,9 @@ app.post("/api/chat", async (req, res) => {
 
     let systemPrompt;
     if (philosopherId === "master" || !philosopherId) {
-      systemPrompt = MASTER_SYSTEM_PROMPT + "\n" + getToneBlock(toneMode) + formatUserProfileBlock(userProfile);
+      // マスター自身は、セッションの温度感（厳しめ/丁寧/探究）の影響を受けない。
+      // 常に同じ穏やかな関西弁キャラでいる（厳しさなどは引き継ぎ先の哲学者だけが担う）。
+      systemPrompt = MASTER_SYSTEM_PROMPT + formatUserProfileBlock(userProfile);
     } else {
       const philosopher = PHIL_BY_ID[philosopherId];
       if (!philosopher) {
