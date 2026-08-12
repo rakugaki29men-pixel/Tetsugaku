@@ -34,7 +34,7 @@ const { buildSystemPrompt, MASTER_SYSTEM_PROMPT, formatUserProfileBlock, getTone
 
 const PORT = process.env.PORT || 3000;
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
-const MODEL = "claude-sonnet-4-6";
+const MODEL = "claude-sonnet-5";
 
 if (!ANTHROPIC_API_KEY) {
   console.warn(
