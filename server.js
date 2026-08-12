@@ -140,7 +140,8 @@ async function callClaude(systemPrompt, messages) {
 
   const data = await response.json();
   const textBlock = (data.content || []).find((b) => b.type === "text");
-  return textBlock ? textBlock.text : "";
+  const text = textBlock ? textBlock.text.trim() : "";
+  return text || "ごめん、うまく言葉が出てこんかったわ。もう一回話しかけてくれる？";
 }
 
 // Web検索ツールを有効にした呼び出し。Web検索はAnthropic側（サーバーサイド）で
@@ -156,7 +157,7 @@ async function callClaudeWithSearch(systemPrompt, messages) {
     },
     body: JSON.stringify({
       model: MODEL,
-      max_tokens: 1000,
+      max_tokens: 1500, // 検索結果を読み込む分、通常より少し多めに確保
       system: systemPrompt,
       messages,
       tools: [{ type: "web_search_20250305", name: "web_search" }],
@@ -170,7 +171,13 @@ async function callClaudeWithSearch(systemPrompt, messages) {
 
   const data = await response.json();
   const textBlocks = (data.content || []).filter((b) => b.type === "text").map((b) => b.text);
-  return textBlocks.join("\n");
+  const combined = textBlocks.join("\n").trim();
+  // 検索処理の途中で本文が空のまま返ってくることがあるため、
+  // 空メッセージをそのまま返さず、分かりやすい保険の文言に差し替える。
+  if (!combined) {
+    return "ごめん、調べてる途中でうまく言葉にまとまらんかったわ。もう一回聞いてみてくれる？";
+  }
+  return combined;
 }
 
 // ---------------------------------------------------------------------------
