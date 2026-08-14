@@ -290,6 +290,38 @@ app.post("/api/summarize", async (req, res) => {
   }
 });
 
+// 履歴画面で複数の会話を選んでまとめる「会話まとめノート」用。
+// 個々の哲学者の主張の要約ではなく、ユーザー自身の見解・気づきの変遷を中心にまとめる。
+const MULTI_SUMMARY_SYSTEM_PROMPT = `あなたは、ユーザーが哲学喫茶アプリで複数の哲学者たちと交わした会話をふりかえり、
+それらをもとに「ユーザー自身の考えの記録」を1つのノートとしてまとめる役割です。
+
+- 個々の哲学者が何を言ったかの要約ではなく、あくまで「ユーザーが何を考え、何に気づいたか」を中心にする
+- 複数の会話にまたがる共通のテーマ、考えの変化や深まりがあれば触れる
+- 見出しや箇条書きを使わず、自然な地の文で300〜500字程度にまとめる
+- マークダウン記法（#や*など）は使わない
+- 「ですます」調ではなく、日記や手記のような、少し内省的な文体で書く
+- JSONではなく、まとめた文章そのものだけを返す（前置きや後書きは不要）`;
+
+app.post("/api/summarize-multi", async (req, res) => {
+  try {
+    const { conversations } = req.body;
+    if (!Array.isArray(conversations) || conversations.length === 0) {
+      return res.status(400).json({ error: "conversations は必須です。" });
+    }
+    const combined = conversations
+      .map((c, i) => `【会話${i + 1}：${c.date || ""}・${c.topic || ""}】\n${c.transcript || ""}`)
+      .join("\n\n---\n\n");
+
+    const noteText = await callClaude(MULTI_SUMMARY_SYSTEM_PROMPT, [
+      { role: "user", content: `以下の複数の会話から、ノートを書いてください。\n\n${combined}` },
+    ]);
+    res.json({ noteText: noteText.trim() });
+  } catch (err) {
+    console.error("summarize-multi error:", err);
+    res.status(500).json({ error: "サーバー内部でエラーが発生しました。" });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`哲学喫茶API サーバー起動: http://localhost:${PORT}`);
 });
