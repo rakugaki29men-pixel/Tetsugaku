@@ -34,7 +34,9 @@ const { buildSystemPrompt, MASTER_SYSTEM_PROMPT, formatUserProfileBlock, getTone
 
 const PORT = process.env.PORT || 3000;
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
-const MODEL = "claude-sonnet-5";
+// 通常会話は応答速度優先の軽量モデル、ガチレスモードは今まで通りの標準モデルを使う。
+const MODEL_CASUAL = "claude-haiku-4-5-20251001";
+const MODEL_GACHI = "claude-sonnet-5";
 
 if (!ANTHROPIC_API_KEY) {
   console.warn(
@@ -104,9 +106,11 @@ app.post("/api/chat", async (req, res) => {
 
     // 記事URLなど、話題の内容をAIに調べてもらいたい場合だけWeb検索を有効にする
     // （毎回検索するとコストがかさむので、フラグが立った時だけ）。
+    // モデルも同様に、通常会話は軽量・高速なモデル、ガチレスは標準モデルを使う。
+    const selectedModel = mode === "gachi" ? MODEL_GACHI : MODEL_CASUAL;
     const reply = enableSearch
-      ? await callClaudeWithSearch(systemPrompt, messages)
-      : await callClaude(systemPrompt, messages);
+      ? await callClaudeWithSearch(systemPrompt, messages, selectedModel)
+      : await callClaude(systemPrompt, messages, selectedModel);
     res.json({ reply });
   } catch (err) {
     console.error("chat error:", err);
@@ -117,7 +121,7 @@ app.post("/api/chat", async (req, res) => {
 // ---------------------------------------------------------------------------
 // Anthropic API 呼び出し（Node標準fetchを使用。追加SDK依存なし）
 // ---------------------------------------------------------------------------
-async function callClaude(systemPrompt, messages) {
+async function callClaude(systemPrompt, messages, model) {
   const response = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
     headers: {
@@ -126,7 +130,7 @@ async function callClaude(systemPrompt, messages) {
       "anthropic-version": "2023-06-01",
     },
     body: JSON.stringify({
-      model: MODEL,
+      model: model || MODEL_CASUAL,
       max_tokens: 800,
       system: systemPrompt,
       messages,
@@ -147,7 +151,7 @@ async function callClaude(systemPrompt, messages) {
 // Web検索ツールを有効にした呼び出し。Web検索はAnthropic側（サーバーサイド）で
 // 実行されるので、こちらで検索結果を受け渡すような複雑なやり取りは不要。
 // レスポンスには複数のtextブロックが混ざることがあるので、それらを結合して返す。
-async function callClaudeWithSearch(systemPrompt, messages) {
+async function callClaudeWithSearch(systemPrompt, messages, model) {
   const response = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
     headers: {
@@ -156,7 +160,7 @@ async function callClaudeWithSearch(systemPrompt, messages) {
       "anthropic-version": "2023-06-01",
     },
     body: JSON.stringify({
-      model: MODEL,
+      model: model || MODEL_GACHI,
       max_tokens: 1500, // 検索結果を読み込む分、通常より少し多めに確保
       system: systemPrompt,
       messages,
@@ -273,7 +277,7 @@ app.post("/api/summarize", async (req, res) => {
 
     const raw = await callClaude(systemPrompt, [
       { role: "user", content: transcript },
-    ]);
+    ], MODEL_GACHI);
 
     let parsed;
     try {
@@ -314,7 +318,7 @@ app.post("/api/summarize-multi", async (req, res) => {
 
     const noteText = await callClaude(MULTI_SUMMARY_SYSTEM_PROMPT, [
       { role: "user", content: `以下の複数の会話から、ノートを書いてください。\n\n${combined}` },
-    ]);
+    ], MODEL_GACHI);
     res.json({ noteText: noteText.trim() });
   } catch (err) {
     console.error("summarize-multi error:", err);
