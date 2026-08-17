@@ -142,6 +142,7 @@ function buildSystemPrompt(philosopher, mode = "casual", userTopic = null, userP
   const ism = philosopher.ism || "";
   const meigen = philosopher.meigen || "";
   const meigenNote = philosopher.meigenNote || "";
+  const gender = philosopher.gender === "female" ? "女性" : "男性";
   const years = formatYears(philosopher);
   const axesLine = formatAxesLine(philosopher);
   const books = formatBooks(philosopher);
@@ -184,6 +185,8 @@ function buildSystemPrompt(philosopher, mode = "casual", userTopic = null, userP
   「お前」「あんた」など、キャラクターに合った自然な二人称を使うか、ニックネームが分かっていればそれを使う。
 
 # 人物像
+- 性別: ${gender}（一人称・語尾・口調は、この性別に合ったものを選ぶこと。
+  「俺」「〜だぜ」等の男性的な言葉遣いを、女性の人物には使わない）
 - 生没年: ${years}
 - 生きた場所: ${places}
 - 家族: ${family}
