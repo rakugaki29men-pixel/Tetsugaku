@@ -158,13 +158,20 @@ async function callClaudeWithSearch(systemPrompt, messages, model) {
       "Content-Type": "application/json",
       "x-api-key": ANTHROPIC_API_KEY,
       "anthropic-version": "2023-06-01",
+      // web_fetch はベータ機能のため、専用ヘッダーが必要
+      "anthropic-beta": "web-fetch-2025-09-10",
     },
     body: JSON.stringify({
       model: model || MODEL_GACHI,
       max_tokens: 1500, // 検索結果を読み込む分、通常より少し多めに確保
       system: systemPrompt,
       messages,
-      tools: [{ type: "web_search_20250305", name: "web_search" }],
+      tools: [
+        { type: "web_search_20250305", name: "web_search" },
+        // ユーザーが記事のURLを直接貼った場合、web_searchだけでは「検索」しかできず
+        // そのURL自体を開けないため、web_fetchも併用してURLを直接読めるようにする。
+        { type: "web_fetch_20250910", name: "web_fetch", max_uses: 5 },
+      ],
     }),
   });
 
