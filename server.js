@@ -109,8 +109,8 @@ app.post("/api/chat", async (req, res) => {
     // モデルも同様に、通常会話は軽量・高速なモデル、ガチレスは標準モデルを使う。
     const selectedModel = mode === "gachi" ? MODEL_GACHI : MODEL_CASUAL;
     const reply = enableSearch
-      ? await callClaudeWithSearch(systemPrompt, messages, selectedModel)
-      : await callClaude(systemPrompt, messages, selectedModel);
+      ? await callClaudeWithSearch(systemPrompt, messages, selectedModel, mode)
+      : await callClaude(systemPrompt, messages, selectedModel, mode);
     res.json({ reply });
   } catch (err) {
     console.error("chat error:", err);
@@ -121,7 +121,10 @@ app.post("/api/chat", async (req, res) => {
 // ---------------------------------------------------------------------------
 // Anthropic API 呼び出し（Node標準fetchを使用。追加SDK依存なし）
 // ---------------------------------------------------------------------------
-async function callClaude(systemPrompt, messages, model) {
+async function callClaude(systemPrompt, messages, model, mode) {
+  // ガチレスモードは「詳しく、深く」話す設計なので、日本語の文字数だと800トークンでは
+  // 途中で切れてしまうことがある。ガチレスの時だけ上限を大きく取る。
+  const maxTokens = mode === "gachi" ? 2000 : 800;
   const response = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
     headers: {
@@ -131,7 +134,7 @@ async function callClaude(systemPrompt, messages, model) {
     },
     body: JSON.stringify({
       model: model || MODEL_CASUAL,
-      max_tokens: 800,
+      max_tokens: maxTokens,
       system: systemPrompt,
       messages,
     }),
@@ -151,7 +154,9 @@ async function callClaude(systemPrompt, messages, model) {
 // Web検索ツールを有効にした呼び出し。Web検索はAnthropic側（サーバーサイド）で
 // 実行されるので、こちらで検索結果を受け渡すような複雑なやり取りは不要。
 // レスポンスには複数のtextブロックが混ざることがあるので、それらを結合して返す。
-async function callClaudeWithSearch(systemPrompt, messages, model) {
+async function callClaudeWithSearch(systemPrompt, messages, model, mode) {
+  // 検索結果の読み込み分に加え、ガチレスの時はさらに多めに確保する
+  const maxTokens = mode === "gachi" ? 2500 : 1500;
   const response = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
     headers: {
@@ -163,7 +168,7 @@ async function callClaudeWithSearch(systemPrompt, messages, model) {
     },
     body: JSON.stringify({
       model: model || MODEL_GACHI,
-      max_tokens: 1500, // 検索結果を読み込む分、通常より少し多めに確保
+      max_tokens: maxTokens,
       system: systemPrompt,
       messages,
       tools: [
