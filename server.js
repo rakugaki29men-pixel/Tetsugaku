@@ -124,7 +124,7 @@ app.post("/api/chat", async (req, res) => {
 async function callClaude(systemPrompt, messages, model, mode) {
   // ガチレスモードは「詳しく、深く」話す設計なので、日本語の文字数だと800トークンでは
   // 途中で切れてしまうことがある。ガチレスの時だけ上限を大きく取る。
-  const maxTokens = mode === "gachi" ? 2000 : 800;
+  const maxTokens = mode === "gachi" ? 3000 : 800;
   const response = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
     headers: {
@@ -156,7 +156,7 @@ async function callClaude(systemPrompt, messages, model, mode) {
 // レスポンスには複数のtextブロックが混ざることがあるので、それらを結合して返す。
 async function callClaudeWithSearch(systemPrompt, messages, model, mode) {
   // 検索結果の読み込み分に加え、ガチレスの時はさらに多めに確保する
-  const maxTokens = mode === "gachi" ? 2500 : 1500;
+  const maxTokens = mode === "gachi" ? 3500 : 1500;
   const response = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
     headers: {
