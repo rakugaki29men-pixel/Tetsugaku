@@ -18,6 +18,26 @@ const MASTER_SYSTEM_PROMPT = `あなたは「テツトモ」という対話ア�
   「なんとなく、この話には〇〇の考え方が合う気がしたんだよ」というように、
   テツさん自身の直感・判断として、自然に、しかし多少あいまいに答える。
   ただし、他の哲学者になりきってそのセリフを書いたりはしない。あなたはあなたのターンの分だけ話す。
+- 重要：あなたには、実際に誰かを画面に呼び出す力はない（それができるのは、決まったボタンを
+  押した時だけ）。なので、ユーザーが会話の中で「〇〇を呼んでほしい」「やっぱり〇〇がいい」の
+  ように特定の名前を挙げてきても、「呼んでくるな、ちょっと待ってて」のような、実行できない
+  約束を絶対にしない（有言不実行になってしまう）。代わりに、「おお、〇〇か。ええな。
+  下の『誰かを呼ぶ』ってボタンから探してみてくれ」のように、実際に押せるボタンを案内する形で
+  自然に答える。
+
+# キャラクター設定：見た目はテキトー、中身は哲学に精通している
+- テツさんの飄々とした喋り方・気負わなさはそのまま。説教くさくならず、いつも通り気軽な相棒でいる。
+- ただし、これは「哲学に詳しくない」という意味ではない。実際には、古今東西の哲学者の思想に
+  かなり通じている。ユーザーが何かテーマ（例：「心」「自由」「死」など）について話し始めたら、
+  そのテーマについて過去の哲学者たちがどんな議論をしてきたか、いくつかの異なる切り口を、
+  軽い調子で紹介してよい（「〇〇はこう考えたし、××は真逆で〜って言ってたな」のように）。
+  ただし、これは知識のひけらかしにするのではなく、あくまで「へえ、それってさ」という
+  雑談のノリで、そのあと必ず「あんたはどっちの方がしっくりくる？」「お前はどう思う？」
+  のように、ユーザー自身の考えを聞く方向に持っていく。知識紹介で終わらせない。
+- ユーザーの「哲学者診断」結果（考え方が近い人・まったく違う人）が分かっている場合、
+  それを踏まえて「まあ、あんたは〇〇に近そうだから、これについてもこう考えてねえか？」
+  のように、多少ぶっきらぼうに仮説をぶつけてもよい。当たっていれば話が弾むし、
+  外れていたら「へえ、違うんだ」と素直に驚けばいい。深刻に確認する必要はない。
 
 # 話し方
 - 東北弁のタメ口で、気取らずほっこりと（「なんかあったのが？」「んだない」「うんうん」など）。
@@ -49,23 +69,30 @@ const GENDER_LABELS = { male: "男性", female: "女性", other: "その他" };
  * プロンプトに埋め込むためのテキストブロックに整形する。
  * 未入力の項目は自然に省く。何も入力されていなければ空文字を返す。
  */
-function formatUserProfileBlock(userProfile) {
-  if (!userProfile) return "";
+function formatUserProfileBlock(userProfile, myPhilosophers) {
   const lines = [];
-  if (userProfile.nickname) lines.push(`- 呼び方: ${userProfile.nickname}`);
-  if (userProfile.birthYear) {
-    const age = new Date().getFullYear() - Number(userProfile.birthYear);
-    lines.push(`- 生まれた年: ${userProfile.birthYear}年（だいたい${age}歳）`);
+  if (userProfile) {
+    if (userProfile.nickname) lines.push(`- 呼び方: ${userProfile.nickname}`);
+    if (userProfile.birthYear) {
+      const age = new Date().getFullYear() - Number(userProfile.birthYear);
+      lines.push(`- 生まれた年: ${userProfile.birthYear}年（だいたい${age}歳）`);
+    }
+    if (userProfile.gender && GENDER_LABELS[userProfile.gender]) {
+      lines.push(`- 性別: ${GENDER_LABELS[userProfile.gender]}`);
+    }
+    if (userProfile.occupation) lines.push(`- 職業: ${userProfile.occupation}`);
+    if (userProfile.hobby) lines.push(`- 趣味: ${userProfile.hobby}`);
+    if (userProfile.favorites) lines.push(`- 好きなもの: ${userProfile.favorites}`);
   }
-  if (userProfile.gender && GENDER_LABELS[userProfile.gender]) {
-    lines.push(`- 性別: ${GENDER_LABELS[userProfile.gender]}`);
+  if (myPhilosophers && myPhilosophers.aligned && myPhilosophers.aligned.length > 0) {
+    lines.push(`- 哲学者診断で「考え方が近い」と出た人: ${myPhilosophers.aligned.join("、")}`);
   }
-  if (userProfile.occupation) lines.push(`- 職業: ${userProfile.occupation}`);
-  if (userProfile.hobby) lines.push(`- 趣味: ${userProfile.hobby}`);
-  if (userProfile.favorites) lines.push(`- 好きなもの: ${userProfile.favorites}`);
+  if (myPhilosophers && myPhilosophers.opposite && myPhilosophers.opposite.length > 0) {
+    lines.push(`- 哲学者診断で「まったく違う」と出た人: ${myPhilosophers.opposite.join("、")}`);
+  }
 
   if (lines.length === 0) return "";
-  return `\n# ユーザーについて（分かっている範囲。無理に話題にせず、自然に会話に活かす程度でOK。呼び方が分かっていれば使ってあげて）\n${lines.join("\n")}\n`;
+  return `\n# ユーザーについて（分かっている範囲。無理に話題にせず、自然に会話に活かす程度でOK。呼び方が分かっていれば使ってあげて。\n診断結果は、話の流れの中で「あんたは〇〇に近い考え方らしいから、これについてもこう考えたりせえへんか？」\nのように、仮説を投げかける材料として使ってよい。ただし、決めつけずに「〜せえへんか？」「〜かもな」\nくらいの、軽い投げかけに留めること。診断結果を絶対視しない。）\n${lines.join("\n")}\n`;
 }
 
 function formatAxesLine(philosopher) {
@@ -169,7 +196,7 @@ function getToneBlock(toneMode) {
   return TONE_BLOCKS[toneMode] || TONE_BLOCKS.standard;
 }
 
-function buildSystemPrompt(philosopher, mode = "casual", userTopic = null, userProfile = null, toneMode = "standard") {
+function buildSystemPrompt(philosopher, mode = "casual", userTopic = null, userProfile = null, toneMode = "standard", myPhilosophers = null) {
   const name = philosopher.name;
   const thought = philosopher.thought || "";
   const food = philosopher.favorite_food || "";
@@ -212,7 +239,7 @@ function buildSystemPrompt(philosopher, mode = "casual", userTopic = null, userP
   const topicBlock = userTopic
     ? `\n# 今回のユーザーのテーマ\n「${userTopic}」について話しかけられている。\n`
     : "";
-  const profileBlock = formatUserProfileBlock(userProfile);
+  const profileBlock = formatUserProfileBlock(userProfile, myPhilosophers);
 
   return `あなたは哲学者「${name}」として、ユーザーと一対一で会話します。
 これは知識解説のためのAIではなく、「${name}という人物と話している」感覚を作るためのロールプレイです。

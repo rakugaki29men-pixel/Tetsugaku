@@ -75,7 +75,14 @@ app.get("/api/philosophers", (req, res) => {
 // ---------------------------------------------------------------------------
 app.post("/api/chat", async (req, res) => {
   try {
-    const { philosopherId, mode = "casual", toneMode = "standard", enableSearch, userTopic, userProfile, history = [], message } = req.body;
+    const { philosopherId, mode = "casual", toneMode = "standard", enableSearch, userTopic, userProfile, myPhilosophers, history = [], message } = req.body;
+
+    // myPhilosophers はクライアント側で id 配列（例: 'sartre'）のまま保存されているので、
+    // プロンプトに渡す前に日本語名へ変換しておく（IDのままだと会話の材料にしづらい）。
+    const myPhilosophersNamed = myPhilosophers ? {
+      aligned: (myPhilosophers.aligned || []).map((id) => PHIL_BY_ID[id]?.name).filter(Boolean),
+      opposite: (myPhilosophers.opposite || []).map((id) => PHIL_BY_ID[id]?.name).filter(Boolean),
+    } : null;
 
     if (!message || typeof message !== "string") {
       return res.status(400).json({ error: "message は必須です。" });
@@ -91,13 +98,13 @@ app.post("/api/chat", async (req, res) => {
       // ノートを読んで仮説を立てながら深掘りする、という役回りそのものが必要になるため、
       // テツさんにもこのトーン指示を適用する。
       const masterToneBlock = toneMode === "explore" ? `\n\n${getToneBlock(toneMode)}` : "";
-      systemPrompt = MASTER_SYSTEM_PROMPT + masterToneBlock + formatUserProfileBlock(userProfile);
+      systemPrompt = MASTER_SYSTEM_PROMPT + masterToneBlock + formatUserProfileBlock(userProfile, myPhilosophersNamed);
     } else {
       const philosopher = PHIL_BY_ID[philosopherId];
       if (!philosopher) {
         return res.status(404).json({ error: `哲学者ID '${philosopherId}' が見つかりません。` });
       }
-      systemPrompt = buildSystemPrompt(philosopher, mode, userTopic, userProfile, toneMode);
+      systemPrompt = buildSystemPrompt(philosopher, mode, userTopic, userProfile, toneMode, myPhilosophersNamed);
     }
 
     const messages = [
