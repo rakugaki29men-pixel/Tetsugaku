@@ -94,10 +94,14 @@ app.post("/api/chat", async (req, res) => {
     let systemPrompt;
     if (philosopherId === "master" || !philosopherId) {
       // マスターは基本的にセッションの温度感（厳しめ/丁寧など）の影響を受けず、
-      // 常に同じ穏やかなキャラでいる。ただし「価値観探究モード（explore）」だけは例外で、
-      // ノートを読んで仮説を立てながら深掘りする、という役回りそのものが必要になるため、
-      // テツさんにもこのトーン指示を適用する。
-      const masterToneBlock = toneMode === "explore" ? `\n\n${getToneBlock(toneMode)}` : "";
+      // 常に同じ穏やかなキャラでいる。ただし「価値観探究モード（explore）」と
+      // 「通常モード（standard）」だけは例外で、これらのモードでの具体的な
+      // リードの仕方（質問攻めにしない、切り口を提示する、等）の指示そのものが
+      // テツさんの振る舞いに直接関わるため、テツさんにもこのトーン指示を適用する。
+      // ※以前は explore のみが対象になっており、standard 用に何度も指示を
+      // 強化しても、実際にはテツさんに一切届いていなかった（根本原因）。
+      const masterToneBlock = (toneMode === "explore" || toneMode === "standard")
+        ? `\n\n${getToneBlock(toneMode)}` : "";
       systemPrompt = MASTER_SYSTEM_PROMPT + masterToneBlock + formatUserProfileBlock(userProfile, myPhilosophersNamed);
     } else {
       const philosopher = PHIL_BY_ID[philosopherId];
