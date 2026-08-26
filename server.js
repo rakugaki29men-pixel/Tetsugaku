@@ -120,8 +120,12 @@ app.post("/api/chat", async (req, res) => {
 
     // 記事URLなど、話題の内容をAIに調べてもらいたい場合だけWeb検索を有効にする
     // （毎回検索するとコストがかさむので、フラグが立った時だけ）。
-    // モデルも同様に、通常会話は軽量・高速なモデル、ガチレスは標準モデルを使う。
-    const selectedModel = mode === "gachi" ? MODEL_GACHI : MODEL_CASUAL;
+    // モデルについて：以前はガチレスモードだけSonnetを使う設計にしていたが、
+    // 実際に使ってみて通常モードとの品質差がほとんど感じられなかったため、
+    // 会話のたびに発生する通常チャットは、ガチレスモードでも一律Haikuを使う
+    // ことにした（コストを大きく抑えられる）。要約系（/api/summarize等）は
+    // 頻度が低く、複数の会話をまとめる高次の処理なので、引き続きSonnetを使う。
+    const selectedModel = MODEL_CASUAL;
     const reply = enableSearch
       ? await callClaudeWithSearch(systemPrompt, messages, selectedModel, mode)
       : await callClaude(systemPrompt, messages, selectedModel, mode);
