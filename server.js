@@ -12,6 +12,7 @@
 // 起動方法:
 //   1) npm install
 //   2) .env に ANTHROPIC_API_KEY=sk-ant-... を設定
+//      OpenAI（Luna等）をテストする場合は OPENAI_API_KEY=sk-... と AI_PROVIDER=openai も設定
 //   3) npm start
 //
 // 動作確認（例）:
@@ -34,9 +35,17 @@ const { buildSystemPrompt, MASTER_SYSTEM_PROMPT, formatUserProfileBlock, getTone
 
 const PORT = process.env.PORT || 3000;
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+// コスト比較のテスト用に、通常チャット（callClaude経由の部分）だけ、
+// 使うAIプロバイダを環境変数で切り替えられるようにする。
+// 'anthropic'（デフォルト） | 'openai'
+// 検索機能（callClaudeWithSearch）や要約機能は、当面Anthropicのまま。
+const AI_PROVIDER = process.env.AI_PROVIDER || "anthropic";
 // 通常会話は応答速度優先の軽量モデル、ガチレスモードは今まで通りの標準モデルを使う。
 const MODEL_CASUAL = "claude-haiku-4-5-20251001";
 const MODEL_GACHI = "claude-sonnet-5";
+// OpenAI側のテスト対象モデル（コストが特に低い「Luna」）。
+const MODEL_OPENAI_CASUAL = "gpt-5.6-luna";
 
 if (!ANTHROPIC_API_KEY) {
   console.warn(
@@ -75,7 +84,7 @@ app.get("/api/philosophers", (req, res) => {
 // ---------------------------------------------------------------------------
 app.post("/api/chat", async (req, res) => {
   try {
-    const { philosopherId, mode = "casual", toneMode = "standard", enableSearch, userTopic, userProfile, myPhilosophers, history = [], message } = req.body;
+    const { philosopherId, mode = "casual", toneMode = "standard", enableSearch, userTopic, userProfile, myPhilosophers, history = [], message, aiProvider } = req.body;
 
     // myPhilosophers はクライアント側で id 配列（例: 'sartre'）のまま保存されているので、
     // プロンプトに渡す前に日本語名へ変換しておく（IDのままだと会話の材料にしづらい）。
@@ -128,7 +137,7 @@ app.post("/api/chat", async (req, res) => {
     const selectedModel = MODEL_CASUAL;
     const reply = enableSearch
       ? await callClaudeWithSearch(systemPrompt, messages, selectedModel, mode)
-      : await callClaude(systemPrompt, messages, selectedModel, mode);
+      : await callClaude(systemPrompt, messages, selectedModel, mode, aiProvider);
     res.json({ reply });
   } catch (err) {
     console.error("chat error:", err);
@@ -139,7 +148,14 @@ app.post("/api/chat", async (req, res) => {
 // ---------------------------------------------------------------------------
 // Anthropic API 呼び出し（Node標準fetchを使用。追加SDK依存なし）
 // ---------------------------------------------------------------------------
-async function callClaude(systemPrompt, messages, model, mode) {
+async function callClaude(systemPrompt, messages, model, mode, providerOverride) {
+  // AI_PROVIDER（サーバー全体のデフォルト）か、リクエストごとのproviderOverride
+  //【テスト用】のどちらかがopenaiを指していれば、検索を使わない通常会話に限り、
+  // OpenAI（Luna）でのコスト・品質比較テストができるようにする。
+  const provider = providerOverride || AI_PROVIDER;
+  if (provider === "openai") {
+    return callOpenAI(systemPrompt, messages, mode);
+  }
   // ガチレスモードは「詳しく、深く」話す設計なので、日本語の文字数だと800トークンでは
   // 途中で切れてしまうことがある。ガチレスの時だけ上限を大きく取る。
   const maxTokens = mode === "gachi" ? 3000 : 800;
@@ -166,6 +182,40 @@ async function callClaude(systemPrompt, messages, model, mode) {
   const data = await response.json();
   const textBlock = (data.content || []).find((b) => b.type === "text");
   const text = textBlock ? textBlock.text.trim() : "";
+  return text || "ごめん、うまく言葉が出てこんかったわ。もう一回話しかけてくれる？";
+}
+
+// OpenAI（Luna等）でのコスト比較テスト用。Chat Completions形式で呼び出す。
+// Anthropicの`system`＋`messages`という形と違い、OpenAIはsystemもmessages配列の
+// 中の1要素（role: "system"）として渡す点に注意。
+async function callOpenAI(systemPrompt, messages, mode) {
+  const maxTokens = mode === "gachi" ? 3000 : 800;
+  const openaiMessages = [
+    { role: "system", content: systemPrompt },
+    // Anthropic形式のmessages（role: "user"/"assistant", content: string）は
+    // OpenAIのChat Completions形式ともほぼ互換なので、そのまま渡せる。
+    ...messages,
+  ];
+  const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${OPENAI_API_KEY}`,
+    },
+    body: JSON.stringify({
+      model: MODEL_OPENAI_CASUAL,
+      max_tokens: maxTokens,
+      messages: openaiMessages,
+    }),
+  });
+
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`OpenAI API error (${response.status}): ${errText}`);
+  }
+
+  const data = await response.json();
+  const text = data.choices?.[0]?.message?.content?.trim() || "";
   return text || "ごめん、うまく言葉が出てこんかったわ。もう一回話しかけてくれる？";
 }
 
