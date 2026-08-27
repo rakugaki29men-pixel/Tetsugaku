@@ -111,7 +111,17 @@ app.post("/api/chat", async (req, res) => {
       // 強化しても、実際にはテツさんに一切届いていなかった（根本原因）。
       const masterToneBlock = (toneMode === "explore" || toneMode === "standard")
         ? `\n\n${getToneBlock(toneMode)}` : "";
-      systemPrompt = MASTER_SYSTEM_PROMPT + masterToneBlock + formatUserProfileBlock(userProfile, myPhilosophersNamed);
+      // 実際にアプリに登録されている哲学者の名前一覧を渡し、[[suggest_philosopher]]
+      // で名指しできるのはこの中からだけ、と縛る。この一覧を渡していなかった時、
+      // モデルによっては（特にAnthropic以外のモデルで顕著だった）、アプリに実在
+      // しない哲学者（例：マルティン・ブーバー）を、一般的な知識から提案して
+      // しまう不具合があった。
+      const rosterBlock = `\n\n# 紹介できる哲学者の一覧（このアプリに実在する人物のみ）\n` +
+        `[[suggest_philosopher: 人物名]] で名指しできるのは、必ず次のリストにある人物に限る。\n` +
+        `このリストにいない人物（一般的な知識にある実在の哲学者・思想家であっても）は、` +
+        `絶対に名指しで紹介しないこと。\n` +
+        PHILOSOPHERS.map((p) => p.name).join('、');
+      systemPrompt = MASTER_SYSTEM_PROMPT + masterToneBlock + rosterBlock + formatUserProfileBlock(userProfile, myPhilosophersNamed);
     } else {
       const philosopher = PHIL_BY_ID[philosopherId];
       if (!philosopher) {
