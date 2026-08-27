@@ -204,7 +204,10 @@ async function callOpenAI(systemPrompt, messages, mode) {
     },
     body: JSON.stringify({
       model: MODEL_OPENAI_CASUAL,
-      max_tokens: maxTokens,
+      // GPT-5.6系のモデルからは、Chat Completions APIでも`max_tokens`ではなく
+      // `max_completion_tokens`を使う仕様に変わっている（従来の`max_tokens`は
+      // 非対応パラメータとしてエラーになる）。
+      max_completion_tokens: maxTokens,
       messages: openaiMessages,
     }),
   });
