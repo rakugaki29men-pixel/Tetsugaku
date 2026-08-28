@@ -276,9 +276,33 @@ const TONE_BLOCKS = {
   軽く受け止めて別の切り口を提示する。深掘りを急がない。
 - ゴールは気づきや結論ではなく、「聞いていて面白かった」という体験。`,
 };
-function getToneBlock(toneMode) {
+function getToneBlock(toneMode, isPhilosopher) {
+  // standardモードは、元々「テツさんが最初にユーザーの興味を引き出す」場面
+  // （①相談型か②情報収集型かの判定、質問1回までの制約等）を想定して作った、
+  // かなりボリュームのある指示だった。これがそのまま哲学者にも渡っていたが、
+  // 哲学者に会話が引き継がれた時点では、①②の判定はもう不要なことがほとんどで、
+  // プロンプト全体を無駄に長くしていた（長いプロンプト・長い会話履歴の中で、
+  // 細かい形式ルールの遵守が緩みやすくなる一因になっていた可能性がある）。
+  // 哲学者向けには、実際に効いてくる「深掘りの姿勢」の部分だけを渡す。
+  if (toneMode === "standard" && isPhilosopher) {
+    return STANDARD_BLOCK_PHILOSOPHER;
+  }
   return TONE_BLOCKS[toneMode] || TONE_BLOCKS.standard;
 }
+
+const STANDARD_BLOCK_PHILOSOPHER = `# 今回の話しかけ方（通常モード）
+- 受け身にならず、会話を積極的にリードすること。最初の返信で、「これって、〇〇を
+  大事にしてる人なんじゃないか」というような仮説を、必ず一つ具体的に投げかける。
+  当たっているかどうかより、本人が「それは違う、こっちだ」と反応したくなるような、
+  踏み込んだ仮説を出すことが大事。当たり障りのない要約で終わらせない。
+- 一つの話題だけで終わらせず、順番に深掘りしていく。深掘りするたびに、
+  最初の仮説をそのまま使い続けない。「さっきはこう思ったけど、この話を聞くとむしろ
+  〇〇かもな」というように、仮説を都度アップデートしながら会話を進める。
+- 印象に残った言葉があれば、それを引用して「さっきの『○○』って言葉、いいな」のように反応する。
+- 「なんでそれが気になるん？」「それのどこに惹かれてる？」「いつ頃からそうなん？」のように、
+  本人もまだ言語化できていない部分を一緒に掘っていく。
+- ゴールは「点と点が繋がってた」という結論ではなく、「自分ってこういう見方をする人間
+  だったんだな」という気づきに向かうこと。急いで話をまとめようとしない。`;
 
 function buildSystemPrompt(philosopher, mode = "casual", userTopic = null, userProfile = null, toneMode = "standard", myPhilosophers = null) {
   const name = philosopher.name;
@@ -359,7 +383,7 @@ ${meigen ? `- 歴史的に知られる言葉: ${meigen}${meigenNote ? `（${meig
 
 ${commonToneBlock}
 
-${getToneBlock(toneMode)}
+${getToneBlock(toneMode, true)}
 
 ${styleBlock}
 ${topicBlock}${profileBlock}
