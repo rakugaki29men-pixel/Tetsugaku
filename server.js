@@ -44,8 +44,11 @@ const AI_PROVIDER = process.env.AI_PROVIDER || "anthropic";
 // 通常会話は応答速度優先の軽量モデル、ガチレスモードは今まで通りの標準モデルを使う。
 const MODEL_CASUAL = "claude-haiku-4-5-20251001";
 const MODEL_GACHI = "claude-sonnet-5";
-// OpenAI側のテスト対象モデル（コストが特に低い「Luna」）。
-const MODEL_OPENAI_CASUAL = "gpt-5.6-luna";
+// OpenAI側のテスト対象モデル。Lunaは最安の大量処理向け、Terraはその1つ上の
+// バランス型（価格はClaude Sonnet 5とほぼ同水準）。価値観深掘り・ノートまとめの
+// ような、要約系の重めのタスクをOpenAIに一本化するにあたり、この2つを比較する。
+const MODEL_OPENAI_LUNA = "gpt-5.6-luna";
+const MODEL_OPENAI_TERRA = "gpt-5.6-terra";
 
 if (!ANTHROPIC_API_KEY) {
   console.warn(
@@ -160,11 +163,16 @@ app.post("/api/chat", async (req, res) => {
 // ---------------------------------------------------------------------------
 async function callClaude(systemPrompt, messages, model, mode, providerOverride) {
   // AI_PROVIDER（サーバー全体のデフォルト）か、リクエストごとのproviderOverride
-  //【テスト用】のどちらかがopenaiを指していれば、検索を使わない通常会話に限り、
-  // OpenAI（Luna）でのコスト・品質比較テストができるようにする。
+  //【テスト用】のどちらかがopenai系を指していれば、OpenAI側で応答する。
+  // "openai"（後方互換のためLuna扱い）/"openai-luna"/"openai-terra" のいずれかを
+  // 受け付け、価値観深掘り・ノートまとめのような要約系タスクでも、Luna/Terra
+  // どちらのモデルで応答するかをテストできるようにしている。
   const provider = providerOverride || AI_PROVIDER;
-  if (provider === "openai") {
-    return callOpenAI(systemPrompt, messages, mode);
+  if (provider === "openai" || provider === "openai-luna") {
+    return callOpenAI(systemPrompt, messages, mode, MODEL_OPENAI_LUNA);
+  }
+  if (provider === "openai-terra") {
+    return callOpenAI(systemPrompt, messages, mode, MODEL_OPENAI_TERRA);
   }
   // ガチレスモードは「詳しく、深く」話す設計なので、日本語の文字数だと800トークンでは
   // 途中で切れてしまうことがある。ガチレスの時だけ上限を大きく取る。
@@ -195,10 +203,10 @@ async function callClaude(systemPrompt, messages, model, mode, providerOverride)
   return text || "ごめん、うまく言葉が出てこんかったわ。もう一回話しかけてくれる？";
 }
 
-// OpenAI（Luna等）でのコスト比較テスト用。Chat Completions形式で呼び出す。
+// OpenAI（Luna/Terra）でのコスト・品質比較テスト用。Chat Completions形式で呼び出す。
 // Anthropicの`system`＋`messages`という形と違い、OpenAIはsystemもmessages配列の
 // 中の1要素（role: "system"）として渡す点に注意。
-async function callOpenAI(systemPrompt, messages, mode) {
+async function callOpenAI(systemPrompt, messages, mode, modelOverride) {
   const maxTokens = mode === "gachi" ? 3000 : 800;
   const openaiMessages = [
     { role: "system", content: systemPrompt },
@@ -213,7 +221,7 @@ async function callOpenAI(systemPrompt, messages, mode) {
       "Authorization": `Bearer ${OPENAI_API_KEY}`,
     },
     body: JSON.stringify({
-      model: MODEL_OPENAI_CASUAL,
+      model: modelOverride || MODEL_OPENAI_LUNA,
       // GPT-5.6系のモデルからは、Chat Completions APIでも`max_tokens`ではなく
       // `max_completion_tokens`を使う仕様に変わっている（従来の`max_tokens`は
       // 非対応パラメータとしてエラーになる）。
@@ -374,7 +382,7 @@ bookRecommendationsについての注意:
 
 app.post("/api/summarize", async (req, res) => {
   try {
-    const { transcript, toneMode } = req.body;
+    const { transcript, toneMode, aiProvider } = req.body;
     if (!transcript || typeof transcript !== "string" || !transcript.trim()) {
       return res.status(400).json({ error: "transcript は必須です。" });
     }
@@ -384,7 +392,7 @@ app.post("/api/summarize", async (req, res) => {
 
     const raw = await callClaude(systemPrompt, [
       { role: "user", content: transcript },
-    ], MODEL_GACHI);
+    ], MODEL_GACHI, undefined, aiProvider);
 
     let parsed;
     try {
@@ -419,7 +427,7 @@ const MULTI_SUMMARY_SYSTEM_PROMPT = `あなたは、ユーザーが哲学喫茶�
 
 app.post("/api/summarize-multi", async (req, res) => {
   try {
-    const { conversations } = req.body;
+    const { conversations, aiProvider } = req.body;
     if (!Array.isArray(conversations) || conversations.length === 0) {
       return res.status(400).json({ error: "conversations は必須です。" });
     }
@@ -429,7 +437,7 @@ app.post("/api/summarize-multi", async (req, res) => {
 
     const noteText = await callClaude(MULTI_SUMMARY_SYSTEM_PROMPT, [
       { role: "user", content: `以下の複数の会話から、ノートを書いてください。\n\n${combined}` },
-    ], MODEL_GACHI);
+    ], MODEL_GACHI, undefined, aiProvider);
     res.json({ noteText: noteText.trim() });
   } catch (err) {
     console.error("summarize-multi error:", err);
