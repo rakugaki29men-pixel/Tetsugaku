@@ -1822,7 +1822,8 @@
     "introBooks": [
       "『覚えておきたい 人と思想100人』（清水書院）所収"
     ],
-    "gender": "male"
+    "gender": "male",
+    "em": "🗽"
   },
   {
     "id": "nietzsche",
@@ -2920,7 +2921,8 @@
     "introBooks": [
       "『覚えておきたい 人と思想100人』（清水書院）所収"
     ],
-    "gender": "male"
+    "gender": "male",
+    "em": "🚩"
   },
   {
     "id": "fukuzawa",
@@ -3314,7 +3316,8 @@
     "introBooks": [
       "『中世思想原典集成11 イスラーム哲学』所収（平凡社）"
     ],
-    "gender": "male"
+    "gender": "male",
+    "em": "⚗️"
   },
   {
     "id": "rumi",
@@ -3412,7 +3415,8 @@
     "introBooks": [
       "『墨子』（ちくま学芸文庫、森三樹三郎訳）"
     ],
-    "gender": "male"
+    "gender": "male",
+    "em": "🤝"
   },
   {
     "id": "han_feizi",
@@ -3559,7 +3563,8 @@
     "introBooks": [
       "『哲学入門』（ちくま学芸文庫、バートランド・ラッセル）"
     ],
-    "gender": "male"
+    "gender": "male",
+    "em": "🧮"
   },
   {
     "id": "peirce",
@@ -3608,7 +3613,8 @@
     "introBooks": [
       "『プラグマティズムの思想』（ちくま学芸文庫、魚津郁夫）"
     ],
-    "gender": "male"
+    "gender": "male",
+    "em": "🔗"
   },
   {
     "id": "dewey",
@@ -3801,7 +3807,8 @@
     "introBooks": [
       "『ピュロン主義哲学の概要』（京都大学学術出版会、金山弥平・金山万里子訳）"
     ],
-    "gender": "male"
+    "gender": "male",
+    "em": "❓"
   },
   {
     "id": "adorno",
@@ -3997,7 +4004,8 @@
     "introBooks": [
       "『インド哲学七つの難問』（講談社選書メチエ、宮元啓一）"
     ],
-    "gender": "male"
+    "gender": "male",
+    "em": "🪔"
   },
   {
     "id": "wollstonecraft",
