@@ -67,14 +67,14 @@ jobs:
       - name: keystoreを復元(Secrets設定済みの場合のみ)
         if: env.KEYSTORE_BASE64 != ''
         run: |
-          echo "$KEYSTORE_BASE64" | base64 -d > capacitor-app/android/app/release.keystore
+          echo "$KEYSTORE_BASE64" | base64 -d > "${{ github.workspace }}/capacitor-app/android/app/release.keystore"
 
       - name: 署名付きAAB(Play提出用)をビルド(Secrets設定済みの場合のみ)
         if: env.KEYSTORE_BASE64 != ''
         working-directory: capacitor-app/android
         run: |
           ./gradlew bundleRelease \
-            -Pandroid.injected.signing.store.file=release.keystore \
+            -Pandroid.injected.signing.store.file="${{ github.workspace }}/capacitor-app/android/app/release.keystore" \
             -Pandroid.injected.signing.store.password="$KEYSTORE_PASSWORD" \
             -Pandroid.injected.signing.key.alias="$KEY_ALIAS" \
             -Pandroid.injected.signing.key.password="$KEY_PASSWORD"
