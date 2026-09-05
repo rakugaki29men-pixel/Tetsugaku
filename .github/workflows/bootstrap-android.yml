@@ -1,0 +1,67 @@
+name: 1. Bootstrap Android Project (一度だけ実行)
+
+# Capacitorの `npx cap add android` を、ローカルPCの代わりにGitHub Actions上で
+# 実行し、生成された android/ フォルダをそのまま capacitor-app/ の中に
+# コミットする。
+# 「Actions」タブ →「1. Bootstrap Android Project」→「Run workflow」で実行する。
+#
+# 実行前提: capacitor-app/package.json, capacitor-app/capacitor.config.json,
+#           capacitor-app/www/index.html が置かれていること。
+#
+# 実行後にやること:
+#   capacitor-app/android/app/build.gradle を開き、README-CAPACITOR.md に
+#   書かれている signingConfigs のスニペットを1回だけ手動で貼り付ける
+#
+# ⚠ すでに capacitor-app/android/ フォルダが存在する場合は何もせず終了する
+#    (誤って上書き・重複コミットしないための安全策)。
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: すでに android/ があれば中断
+        run: |
+          if [ -d "capacitor-app/android" ]; then
+            echo "capacitor-app/android/ はすでに存在します。何もせず終了します。"
+            echo "SKIP=true" >> "$GITHUB_ENV"
+          fi
+
+      - name: Set up Node
+        if: env.SKIP != 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up JDK
+        if: env.SKIP != 'true'
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: 依存関係インストール
+        if: env.SKIP != 'true'
+        working-directory: capacitor-app
+        run: npm install
+
+      - name: android プラットフォームを追加
+        if: env.SKIP != 'true'
+        working-directory: capacitor-app
+        run: npx cap add android
+
+      - name: capacitor-app/android/ をコミット & push
+        if: env.SKIP != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add capacitor-app/android/ capacitor-app/package-lock.json
+          git commit -m "chore: bootstrap capacitor-app/android/ project via Capacitor"
+          git push
