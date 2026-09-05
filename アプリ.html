@@ -10444,7 +10444,7 @@ function renderMap3d() {
     const balloon = document.createElement('div');
     balloon.className = 'map3d-balloon' + (locked && !isGroup ? ' map3d-balloon-locked' : '');
     balloon.dataset.h = MAP3D_PIN_HEIGHT;
-    balloon.style.transform = `translateZ(${MAP3D_PIN_HEIGHT}px) rotateZ(${-map3dSpin}deg) rotateX(${-map3dTilt}deg)`;
+    balloon.style.transform = `translateZ(${MAP3D_PIN_HEIGHT}px) rotateZ(${-map3dSpin}deg) rotateX(${-map3dTilt}deg) translateX(-50%)`;
     const bg = (locked && !isGroup) ? 'linear-gradient(135deg,#C8C0B4,#A09688)' : (hasPhilImage(primary.id) ? 'transparent' : primary.bg);
     const badgeHtml = isGroup ? `<div class="map3d-group-badge">${group.members.length}</div>` : '';
     const nameLabel = isGroup ? `${primary.name} ほか${group.members.length - 1}人` : primary.name;
@@ -10476,7 +10476,7 @@ function renderMap3d() {
     const userBalloon = document.createElement('div');
     userBalloon.className = 'map3d-balloon map3d-balloon-user';
     userBalloon.dataset.h = MAP3D_PIN_HEIGHT;
-    userBalloon.style.transform = `translateZ(${MAP3D_PIN_HEIGHT}px) rotateZ(${-map3dSpin}deg) rotateX(${-map3dTilt}deg)`;
+    userBalloon.style.transform = `translateZ(${MAP3D_PIN_HEIGHT}px) rotateZ(${-map3dSpin}deg) rotateX(${-map3dTilt}deg) translateX(-50%)`;
     userBalloon.innerHTML = `<div class="map3d-balloon-av map-av-user">🙂</div><div class="map3d-balloon-name">あなた</div>`;
     userBalloon.onclick = () => showToast('これは、マイテツ診断で計算された、あなた自身の位置だよ');
     userPin.appendChild(userBalloon);
@@ -10510,7 +10510,7 @@ function applyMap3dSpin() {
   world.style.transform = `scale(${map3dZoom}) rotateX(${map3dTilt}deg) rotateZ(${map3dSpin}deg)`;
   const invZoom = 1 / map3dZoom; // 親のscale(zoom)を打ち消して、アイコン自体の大きさは変えない
   document.querySelectorAll('.map3d-balloon').forEach((el) => {
-    el.style.transform = `translateZ(${MAP3D_PIN_HEIGHT}px) rotateZ(${-map3dSpin}deg) rotateX(${-map3dTilt}deg) scale(${invZoom})`;
+    el.style.transform = `translateZ(${MAP3D_PIN_HEIGHT}px) rotateZ(${-map3dSpin}deg) rotateX(${-map3dTilt}deg) translateX(-50%) scale(${invZoom})`;
   });
   // 軸ラベルも、哲学者の名前と同じように常にカメラ目線を保つ（回転しても逆さにならない）
   document.querySelectorAll('.map3d-ax-lbl').forEach((el) => {
@@ -10553,7 +10553,7 @@ function setupMap3dGestures() {
     if (!map3dDragging) return;
     const dx = ev.clientX - map3dDragStartX;
     const dy = ev.clientY - map3dDragStartY;
-    map3dSpin = map3dDragStartSpin + dx * 0.4;
+    map3dSpin = map3dDragStartSpin - dx * 0.4;
     // 縦ドラッグ：下にドラッグするほど見下ろす角度が浅くなる（直感的な向きに）
     map3dTilt = Math.min(MAP3D_TILT_MAX, Math.max(MAP3D_TILT_MIN, map3dDragStartTilt - dy * 0.3));
     applyMap3dSpin();
