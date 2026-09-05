@@ -1,0 +1,22 @@
+{
+  "name": "tetsutomo-app",
+  "version": "1.0.0",
+  "description": "テツトモ - 哲学喫茶アプリ（Capacitorラッパー）",
+  "private": true,
+  "scripts": {
+    "sync": "cap sync android",
+    "open:android": "cap open android",
+    "build:android": "cd android && ./gradlew bundleRelease"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/splash-screen": "^6.0.2",
+    "@capacitor/share": "^6.0.2",
+    "@capacitor/push-notifications": "^6.0.2",
+    "@capacitor/haptics": "^6.0.1"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.1.2"
+  }
+}
