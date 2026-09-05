@@ -64,12 +64,7 @@ const PHIL_BY_ID = Object.fromEntries(PHILOSOPHERS.map((p) => [p.id, p]));
 
 const app = express();
 app.use(cors()); // 開発中は全許可。本番ではフロントのオリジンに絞ること。
-app.use(express.json({ limit: "1mb" }));// フロントエンド(アプリ.html)を配信する
-app.use(express.static(__dirname));
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "アプリ.html"));
-});
+app.use(express.json({ limit: "1mb" }));
 
 // ---------------------------------------------------------------------------
 // GET /api/philosophers
@@ -319,12 +314,15 @@ app.get("/api/trending-topics", async (req, res) => {
       const cleaned = raw.replace(/```json|```/g, "").trim();
       parsed = JSON.parse(cleaned);
     } catch (e) {
-      parsed = { topics: [] };
+      // JSONとして解釈できなかった場合。原因切り分けのため、AIの生の返答を
+      // 一時的にそのまま含めて返す（原因が分かったら元に戻すこと）。
+      console.error("trending-topics JSON parse failed. raw was:", raw);
+      parsed = { topics: [], _debugParseFailed: true, _debugRaw: raw };
     }
     res.json(parsed);
   } catch (err) {
     console.error("trending-topics error:", err);
-    res.status(500).json({ error: "サーバー内部でエラーが発生しました。" });
+    res.status(500).json({ error: "サーバー内部でエラーが発生しました。", _debugMessage: String(err && err.message || err) });
   }
 });
 
