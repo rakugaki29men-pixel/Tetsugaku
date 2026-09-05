@@ -1,0 +1,21 @@
+{
+  "appId": "com.tetsutomo.app",
+  "appName": "テツトモ",
+  "webDir": "www",
+  "server": {
+    "url": "https://tetsugaku.onrender.com",
+    "cleartext": false,
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": false
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 800,
+      "backgroundColor": "#FBF8F4",
+      "androidSplashResourceName": "splash",
+      "showSpinner": false
+    }
+  }
+}
