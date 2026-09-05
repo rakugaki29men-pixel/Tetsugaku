@@ -1339,6 +1339,7 @@ textarea.free-input::placeholder{color:var(--sub);}
     </div>
     <button class="note-save-btn" style="width:100%;margin-bottom:8px;" onclick="toggleHistTranscript()" id="hs-transcript-toggle">💬 会話そのものを見る</button>
     <div class="hist-transcript" id="hs-transcript" style="display:none;"></div>
+    <button class="note-save-btn" style="width:100%;margin-bottom:8px;" onclick="shareHistoryConversation()">📤 この会話をシェア</button>
     <button class="note-master-btn" style="width:100%;margin-bottom:8px;" onclick="continueFromHistory()">🔁 この話をまた始める</button>
     <button class="hist-sheet-close" onclick="closeHistDetail()">閉じる</button>
   </div>
@@ -7554,6 +7555,23 @@ history.replaceState({ navDepth: 1 }, '', '');
 window.addEventListener('popstate', () => {
   performGoBack();
 });
+// Androidの物理/ジェスチャーの「戻る」ボタン対応。
+// Capacitorのデフォルトでは、ハードウェアの戻るボタンはWebView側の履歴（上のpopstate）を
+// 一切経由せず、いきなりアプリを終了させてしまう。@capacitor/appプラグインの
+// backButtonイベントを使い、まだアプリ内で戻れる場合はhistory.back()に処理を委ねる
+// （そうすると通常のpopstate→performGoBackの流れがそのまま使える）。
+// 戻り先がもう無い場合（トップ画面まで戻りきった場合）だけ、実際にアプリを終了する。
+(function () {
+  const CapApp = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.App;
+  if (!CapApp) return; // Web版・@capacitor/app未導入環境では何もしない
+  CapApp.addListener('backButton', ({ canGoBack }) => {
+    if (canGoBack) {
+      history.back();
+    } else {
+      CapApp.exitApp();
+    }
+  });
+})();
 let activeScreen = 'screen-home';
 
 const NAV_MAP = {
@@ -11594,6 +11612,22 @@ function toggleHistTranscript() {
   btn.textContent = isOpen ? '💬 会話そのものを見る' : '💬 閉じる';
 }
 
+// 履歴の詳細シートから、会話そのものをテキストとしてシェアする。
+// 引用（この話をまた始める、で使うのと同じ transcript）を、そのまま
+// 「話し手: 発言」の形に整形して、既存のshareContent（Web Share API／
+// クリップボードコピーへのフォールバック）に渡す。
+function shareHistoryConversation() {
+  if (!openHistId) return;
+  const h = loadHistoryList().find((x) => x.id === openHistId);
+  if (!h || !h.transcript || h.transcript.length === 0) {
+    showToast('シェアできる会話ログが見つからなかったよ');
+    return;
+  }
+  const body = h.transcript.map((m) => `${m.speakerName}：${m.content}`).join('\n\n');
+  const header = `${h.date}・${h.topic || '会話'}`;
+  shareContent(`テツトモでの会話（${header}）`, `${header}\n\n${body}`);
+}
+
 let openHistId = null;
 function openHistDetail(id) {
   const h = loadHistoryList().find(x => x.id === id);
@@ -12452,20 +12486,20 @@ function showLegalDoc(key) {
 
 const GUIDE_STEPS = [
   { img: 'home', title: 'テツトモへようこそ',
-    desc: 'たくさんの哲学者や、案内役の「テツさん」と、\n気軽に話せるアプリだよ。\n\n下の「話してみる」から、会話がはじまるよ。' },
+    desc: 'たくさんの哲学者と話せるアプリだよ。\n案内役は　テツさん。\n「話してみる」から会話がはじまるよ。' },
   { img: 'topic', title: '3つの話しかけ方',
-    desc: '「考えごと」は世界や人間について、じっくり。\n「悩みごと」は、今気になっていることの相談。\n「なんとなく」は、深く考えたくない気分の時に。' },
+    desc: '「哲学する」は世界や人間について、\nじっくり考えたいとき。\n「相談する」は気になることについて\n誰かの意見を聞きたいとき。\n「なんとなく」は哲学の話を聞いたり\n気楽に話したいとき。' },
   { img: 'speaker', title: '話す相手を選ぶ',
-    desc: 'テーマを決めたら、話す相手を選ぶ画面に進むよ。\n\n🎯「このテーマに詳しい人」は、選んだ内容に\n合わせておすすめされる哲学者。マイテツ・\n最近話した人・名前検索からも選べる。',
+    desc: 'テーマを決めたら、\n話す相手を選ぶ画面に進むよ。\n\n🎯「このテーマに詳しい人」は、\n選んだ内容におすすめな哲学者。\nそのほかマイテツや最近話した人\n名前検索からも選べる。',
     hl: { top: 34, left: 50, size: 60 } },
   { img: 'chat', title: '会話中に使えるボタン',
-    desc: '画面下の3つのボタンはいつでも使えるよ。\n\n📝「ノートに残す」→ 今の会話をそのままメモに\n👥「誰かを呼ぶ」→ 話の流れのまま、別の哲学者を呼ぶ\n🔄「真逆の視点」→ あえて反対の考え方を聞いてみる\n\n左上の⏸️を押すと会話を終了できる\n（終了しても履歴にはちゃんと残るよ）。',
+    desc: '画面下の3つのボタンはいつでも使えるよ。\n\n📝「ノートに残す」\n　→ 今の会話をそのままメモに\n👥「誰かを呼ぶ」\n　→ 話の流れのまま別の哲学者を呼ぶ\n🔄「真逆の視点」\n　→ あえて反対の考え方を聞いてみる\n\n左上の⏸️を押すと会話を終了できる\n（終了しても履歴にはちゃんと残るよ）。',
     hl: { top: 79, left: 50, size: 45 } },
   { img: 'chat', title: 'キラキラ光る言葉をタップ',
-    desc: 'AIの発言の中で、キラキラ光ってる言葉があったら\nタップしてみて。\n\nその言葉の意味が、その場でサラッと\n解説されるよ。難しい用語が出てきても、\nいちいち調べ直さなくて大丈夫。',
+    desc: '哲学者の発言の中で、キラキラ光る\n言葉があったらタップしてみて。\n\nその言葉の意味が、その場でサラッと\n解説される。難しい用語が出てきても\nいちいち調べ直さなくて大丈夫。',
     hl: { top: 19, left: 33, size: 36 } },
   { img: 'icon_bubble', title: 'プロフィールは3タブで見られる',
-    desc: '上のタブで「基本」「偉人エピソード」\n「著書・関連本」を切り替えられるよ。\n\n名言やエピソードは↑共有ボタンでシェアもできる。\nちなみにアイコンをタップすると、選ばれた\n理由もちょっとだけ教えてもらえる。',
+    desc: '上のタブで「基本」「偉人エピソード」\n「著書・関連本」を切り替えられるよ。\n\nおもしろいと思う名言やエピソードは\n↑共有ボタンでシェアしてみてね。',
     hl: { top: 35, left: 50, size: 60 } },
   { img: 'note', title: 'ノート',
     desc: '自由に書けるメモのほかに、\n「価値観を深掘りする」という専用フォームもあるよ。\n\n答えると、テツさんがじっくり深掘りしてくれる。',
@@ -12477,14 +12511,11 @@ const GUIDE_STEPS = [
     desc: '履歴の「選択」から「まとめる」を押すと、\nその会話をテツさんが1つのノートに\n書き起こしてくれるよ。1つの会話でもOK。\n\n複数選べば、話すたびに少しずつ形になってきた\n自分の考えを、まとめて見返すこともできる。',
     hl: { top: 92, left: 84, size: 55 } },
   { img: 'friends', title: 'テツトモ一覧・マイテツ',
-    desc: '話した哲学者がここに並んでいくよ。\n「診断する」で、自分と近い・真逆の哲学者も\n見つかる。プロフィールの★でも手動登録できる。\n\n診断結果は思想マップにも現れるよ。近くの人・\n遠くの人との距離感を眺めてみるのも面白い。',
+    desc: '話した哲学者がここに並んでいくよ。\n「診断する」で、自分と近い＆真逆の哲学者も\n見つかる。プロフィールの★でも手動登録できる。\n\n診断結果は思想マップにも現れるよ。近くの人・\n遠くの人との距離感を眺めてみるのも面白い。',
     hl: { top: 26, left: 71, size: 26 } },
   { img: 'map2d', title: '思想マップ・年表・系譜図',
-    desc: '4つの軸で、哲学者たちの位置関係を眺められるよ。\n\n年表タブでは「生きてた時期の重なり」も見られる。\n系譜図タブでは、反発した関係は点線で、\n複数の影響が合流した人には🔀マークがつくよ。',
+    desc: '4つの軸で、それぞれの哲学者たちの\n考え方の位置関係を眺められるよ。\nそのほか、年表や系譜図も見てみて。\n\n平面でアイコンが重なって見づらい時、\n右上の「3D」で立体表示に切り替えると\n回転させて隠れてる人を探せるよ。',
     hl: { top: 20, left: 87, size: 15 } },
-  { img: 'map3d', title: 'マップは3D表示もできる',
-    desc: '平面だとアイコンが重なって見づらい時、\n右上の「3D」で立体表示に切り替えると、\n回転させて隠れてる人を探せるよ。\n\n横ドラッグで回転、縦ドラッグで傾きを変えられる。',
-    hl: { top: 20, left: 74, size: 15 } },
   { emoji: '✨', title: 'さあ、はじめよう',
     desc: 'この説明は、左上の「？」ボタンから\nいつでも見返せるよ。\n\n最後に、簡単な診断で、あなたと近い・真逆の\n哲学者を見つけてみよう。' },
 ];
