@@ -40,7 +40,7 @@ const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 // 使うAIプロバイダを環境変数で切り替えられるようにする。
 // 'anthropic'（デフォルト） | 'openai'
 // 検索機能（callClaudeWithSearch）や要約機能は、当面Anthropicのまま。
-const AI_PROVIDER = process.env.AI_PROVIDER || "anthropic";
+const AI_PROVIDER = process.env.AI_PROVIDER || "openai";
 // 通常会話は応答速度優先の軽量モデル、ガチレスモードは今まで通りの標準モデルを使う。
 const MODEL_CASUAL = "claude-haiku-4-5-20251001";
 const MODEL_GACHI = "claude-sonnet-5";
@@ -155,8 +155,11 @@ app.post("/api/chat", async (req, res) => {
     // ことにした（コストを大きく抑えられる）。要約系（/api/summarize等）は
     // 頻度が低く、複数の会話をまとめる高次の処理なので、引き続きSonnetを使う。
     const selectedModel = MODEL_CASUAL;
+    // Web検索が必要な会話（「最近の話題」についてのコメンタリーモード）は、
+    // Anthropicへの依存をなくすため、OpenAI（Responses API + web_searchツール）に統一する。
+    const searchModel = (aiProvider || AI_PROVIDER) === "openai-terra" ? MODEL_OPENAI_TERRA : MODEL_OPENAI_LUNA;
     const reply = enableSearch
-      ? await callClaudeWithSearch(systemPrompt, messages, selectedModel, mode)
+      ? await callOpenAIWithSearch(systemPrompt, messages, searchModel, mode)
       : await callClaude(systemPrompt, messages, selectedModel, mode, aiProvider);
     res.json({ reply });
   } catch (err) {
@@ -267,6 +270,46 @@ function extractJsonFromText(raw) {
   return raw.trim();
 }
 
+// Web検索ツールを有効にしたOpenAI呼び出し（Responses APIを使用）。
+// 通常の会話は従来通りChat Completions APIを使うが、gpt-5系モデルで
+// ホスト型のweb_searchツールを使うには、Chat CompletionsではなくResponses API
+// （/v1/responses）を使う必要がある（Chat Completionsのweb_search_optionsは
+// gpt-5系では非対応で、400エラー "Unknown parameter" になる）。
+// レスポンスには、実際のテキスト本文（type: "message"）の他に、検索実行そのものを
+// 表す項目（type: "web_search_call"）も混ざって返ってくるので、本文だけを拾い出す。
+async function callOpenAIWithSearch(systemPrompt, messages, model, mode) {
+  const maxTokens = mode === "gachi" ? 3500 : 1500;
+  const response = await fetch("https://api.openai.com/v1/responses", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${OPENAI_API_KEY}`,
+    },
+    body: JSON.stringify({
+      model: model || MODEL_OPENAI_LUNA,
+      instructions: systemPrompt,
+      input: messages,
+      tools: [{ type: "web_search" }],
+      max_output_tokens: maxTokens,
+    }),
+  });
+
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`OpenAI API error (${response.status}): ${errText}`);
+  }
+
+  const data = await response.json();
+  const textBlocks = (data.output || [])
+    .filter((item) => item.type === "message")
+    .flatMap((item) => (item.content || []).filter((c) => c.type === "output_text").map((c) => c.text));
+  const combined = textBlocks.join("\n").trim();
+  if (!combined) {
+    return "ごめん、調べてる途中でうまく言葉にまとまらんかったわ。もう一回聞いてみてくれる？";
+  }
+  return combined;
+}
+
 async function callClaudeWithSearch(systemPrompt, messages, model, mode) {
   // 検索結果の読み込み分に加え、ガチレスの時はさらに多めに確保する
   const maxTokens = mode === "gachi" ? 3500 : 1500;
@@ -330,9 +373,9 @@ web検索を使って、直近話題になっているニュースや出来事�
 
 app.get("/api/trending-topics", async (req, res) => {
   try {
-    const raw = await callClaudeWithSearch(TRENDING_TOPICS_SYSTEM_PROMPT, [
+    const raw = await callOpenAIWithSearch(TRENDING_TOPICS_SYSTEM_PROMPT, [
       { role: "user", content: "今話題になっているニュースを3つ教えて。" },
-    ]);
+    ], MODEL_OPENAI_LUNA);
     let parsed;
     try {
       parsed = JSON.parse(extractJsonFromText(raw));
