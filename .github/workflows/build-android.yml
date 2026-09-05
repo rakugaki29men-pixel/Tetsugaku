@@ -1,0 +1,87 @@
+name: 2. Build Android App
+
+# メインのビルドワークフロー。
+# ・capacitor-app/android/ に変更をpushしたとき、または手動実行で動く。
+# ・Secrets(KEYSTORE_BASE64等)が未設定でも、動作確認用のデバッグAPKは必ず作られる。
+# ・Secretsを登録済みなら、Google Play提出用の署名付きAAB(App Bundle)も作られる。
+#
+# 出来上がったファイルは、この実行結果ページ下部の「Artifacts」からダウンロードできる。
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'capacitor-app/**'
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+      KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+      KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+      KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: android/ が無い場合は案内して終了
+        run: |
+          if [ ! -d "capacitor-app/android" ]; then
+            echo "::error::capacitor-app/android/ がありません。先に「1. Bootstrap Android Project」を実行してください。"
+            exit 1
+          fi
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: 依存関係インストール
+        working-directory: capacitor-app
+        run: npm install
+
+      - name: Capacitor sync
+        working-directory: capacitor-app
+        run: npx cap sync android
+
+      - name: gradlew に実行権限
+        run: chmod +x capacitor-app/android/gradlew
+
+      - name: デバッグAPKをビルド(常に実行・動作確認用)
+        working-directory: capacitor-app/android
+        run: ./gradlew assembleDebug
+
+      - name: デバッグAPKをアップロード
+        uses: actions/upload-artifact@v4
+        with:
+          name: tetsutomo-debug-apk
+          path: capacitor-app/android/app/build/outputs/apk/debug/app-debug.apk
+
+      - name: keystoreを復元(Secrets設定済みの場合のみ)
+        if: env.KEYSTORE_BASE64 != ''
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 -d > capacitor-app/android/app/release.keystore
+
+      - name: 署名付きAAB(Play提出用)をビルド(Secrets設定済みの場合のみ)
+        if: env.KEYSTORE_BASE64 != ''
+        working-directory: capacitor-app/android
+        run: |
+          ./gradlew bundleRelease \
+            -Pandroid.injected.signing.store.file=app/release.keystore \
+            -Pandroid.injected.signing.store.password="$KEYSTORE_PASSWORD" \
+            -Pandroid.injected.signing.key.alias="$KEY_ALIAS" \
+            -Pandroid.injected.signing.key.password="$KEY_PASSWORD"
+
+      - name: 署名付きAABをアップロード(Secrets設定済みの場合のみ)
+        if: env.KEYSTORE_BASE64 != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: tetsutomo-release-aab
+          path: capacitor-app/android/app/build/outputs/bundle/release/app-release.aab
