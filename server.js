@@ -250,6 +250,23 @@ async function callOpenAI(systemPrompt, messages, mode, modelOverride) {
 // Web検索ツールを有効にした呼び出し。Web検索はAnthropic側（サーバーサイド）で
 // 実行されるので、こちらで検索結果を受け渡すような複雑なやり取りは不要。
 // レスポンスには複数のtextブロックが混ざることがあるので、それらを結合して返す。
+// AIの返答からJSON部分だけを取り出す。
+// 「JSONのみを出力して」と指示しても、web検索などツールを使った後の返答では
+// 「〜見つかりました。以下がその内容です」のような前置き文が付いてしまうことがあり、
+// 単にコードブロックの記号（```）を取り除くだけでは対応しきれない。
+// そこで、```json〜``` のコードブロックがあればその中身を、無ければ最初の「{」から
+// 最後の「}」までを取り出す、という順で頑丈にJSON部分を抽出する。
+function extractJsonFromText(raw) {
+  const fenceMatch = raw.match(/```(?:json)?\s*([\s\S]*?)```/);
+  if (fenceMatch) return fenceMatch[1].trim();
+  const start = raw.indexOf("{");
+  const end = raw.lastIndexOf("}");
+  if (start !== -1 && end !== -1 && end > start) {
+    return raw.slice(start, end + 1).trim();
+  }
+  return raw.trim();
+}
+
 async function callClaudeWithSearch(systemPrompt, messages, model, mode) {
   // 検索結果の読み込み分に加え、ガチレスの時はさらに多めに確保する
   const maxTokens = mode === "gachi" ? 3500 : 1500;
@@ -318,8 +335,7 @@ app.get("/api/trending-topics", async (req, res) => {
     ]);
     let parsed;
     try {
-      const cleaned = raw.replace(/```json|```/g, "").trim();
-      parsed = JSON.parse(cleaned);
+      parsed = JSON.parse(extractJsonFromText(raw));
     } catch (e) {
       // JSONとして解釈できなかった場合。原因切り分けのため、AIの生の返答を
       // 一時的にそのまま含めて返す（原因が分かったら元に戻すこと）。
@@ -406,8 +422,7 @@ app.post("/api/summarize", async (req, res) => {
 
     let parsed;
     try {
-      const cleaned = raw.replace(/```json|```/g, "").trim();
-      parsed = JSON.parse(cleaned);
+      parsed = JSON.parse(extractJsonFromText(raw));
     } catch (e) {
       // JSONとして読めなかった場合の保険（丸ごとinsightとして返す）
       parsed = { question: "", insight: raw.trim() };
