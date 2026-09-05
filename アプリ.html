@@ -9032,18 +9032,38 @@ function findPhilIdByName(name) {
 }
 function pickHandoffPhilosopher() {
   // 2-gram単位の緩いマッチは「自由」→「天の自然観」のような偶然の一致（誤マッチ）が
-  // 多発したため、精度重視の2段階方式にする。
-  // 第一段階：最初に選んだテーマ（短い単語）が、各哲学者のkeywordsまたはism
+  // 多発したため、精度重視の段階方式にする。
+  const topic = (selectedTopic || '').trim();
+
+  // 第一段階（最優先）：「このテーマに詳しい人」機能でも使っている、人手で用意した
+  // テーマ→哲学者の対応表（TOPIC_RECOMMENDATIONS）を使う。単純なキーワード部分一致より
+  // ヒット率が高く、質の良い理由付けができる。テーマ名の表記ゆれ（「自分の仕事」等、
+  // 統計由来の少し長い表現）にも対応できるよう、双方向の部分一致で対応表のキーを探す。
+  if (topic) {
+    const recKey = Object.keys(TOPIC_RECOMMENDATIONS).find((k) => topic.includes(k) || k.includes(topic));
+    if (recKey) {
+      const candidates = TOPIC_RECOMMENDATIONS[recKey].map((id) => P[id]).filter(Boolean);
+      if (candidates.length > 0) {
+        const chosen = candidates[Math.floor(Math.random() * candidates.length)];
+        return {
+          ...chosen,
+          handoffReason: `テーマ「${topic}」について話すのに、相性が良いとされている人物`,
+          handoffReasonShort: `「${topic}」の話なら`,
+        };
+      }
+    }
+  }
+
+  // 第二段階：最初に選んだテーマ（短い単語）が、各哲学者のkeywordsまたはism
   //   （〜主義、のような思想の短い呼び名）に部分一致するか
   //   （例：「自由」というテーマなら、「自由と責任」というキーワードに含まれる形でヒット）
-  const topic = (selectedTopic || '').trim();
   let scored = [];
   if (topic) {
     scored = Object.values(P)
       .map((p) => ({ p, matched: (p.keywords || []).find((f) => f && f.includes(topic)) || (p.ism && p.ism.includes(topic) ? p.ism : null) }))
       .filter((s) => s.matched);
   }
-  // 第二段階：それでも見つからなければ、直近の会話内容に、哲学者のキーワードや
+  // 第三段階：それでも見つからなければ、直近の会話内容に、哲学者のキーワードや
   // ismが（こちらもそのままの形で）含まれていないか探す。参照範囲は、話が
   // ある程度進んだ後でも文脈を拾えるよう、直近12件まで見る。
   if (scored.length === 0) {
@@ -9072,6 +9092,7 @@ function pickHandoffPhilosopher() {
   const chosen = pool[Math.floor(Math.random() * pool.length)];
   return { ...chosen, handoffReason: null };
 }
+
 
 // テツさんが一言バトンタッチの前振りをしたあと、「呼んでみる/もう少し話す」の確認を挟む。
 // 「もう少し話す」を選んだ場合はターン数をリセットし、また何ターンか会話が進んだ
