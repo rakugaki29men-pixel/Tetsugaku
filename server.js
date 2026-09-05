@@ -66,6 +66,13 @@ const app = express();
 app.use(cors()); // 開発中は全許可。本番ではフロントのオリジンに絞ること。
 app.use(express.json({ limit: "1mb" }));
 
+// フロントエンド(アプリ.html)を配信する
+app.use(express.static(__dirname));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "アプリ.html"));
+});
+
 // ---------------------------------------------------------------------------
 // GET /api/philosophers
 // フロントが61人分のデータを取得するためのエンドポイント。
