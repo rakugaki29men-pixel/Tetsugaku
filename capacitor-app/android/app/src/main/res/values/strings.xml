@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">テツトモ</string>
+    <string name="title_activity_main">テツトモ</string>
+    <string name="package_name">com.tetsutomo.app</string>
+    <string name="custom_url_scheme">com.tetsutomo.app</string>
+</resources>
