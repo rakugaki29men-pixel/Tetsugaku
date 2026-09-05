@@ -36,13 +36,13 @@ html,body{height:100%;background:#DDD5C8;font-family:-apple-system,'Hiragino San
 #screen-guide{background:rgba(44,36,24,.55);backdrop-filter:blur(4px);z-index:60;}
 .guide-sheet{background:var(--panel);height:100%;padding:22px 20px 28px;display:flex;flex-direction:column;animation:sheet-fade .3s ease;}
 @keyframes sheet-fade{from{opacity:0;}to{opacity:1;}}
-.guide-dots{display:flex;justify-content:center;gap:6px;margin-bottom:18px;flex-shrink:0;}
+.guide-dots{display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:18px;flex-shrink:0;}
 .guide-dot{width:6px;height:6px;border-radius:50%;background:var(--border);}
 .guide-dot.active{background:var(--accent);width:16px;border-radius:50px;}
 .guide-body{flex:1;overflow-y:auto;text-align:center;padding:4px 4px 12px;}
 .guide-emoji{font-size:52px;margin-bottom:16px;}
 .guide-title{font-size:18px;font-weight:700;margin-bottom:10px;}
-.guide-desc{font-size:14px;color:var(--sub);line-height:1.8;white-space:pre-line;}
+.guide-desc{font-size:14px;color:var(--sub);line-height:1.8;white-space:pre-line;text-wrap:pretty;overflow-wrap:break-word;}
 .guide-shot-wrap{position:relative;width:100%;max-width:250px;margin:0 auto 16px;border-radius:18px;overflow:hidden;box-shadow:0 8px 22px rgba(0,0,0,.18);border:1px solid var(--border);}
 .guide-shot-wrap img{display:block;width:100%;}
 .guide-highlight{position:absolute;border:3px solid var(--text);border-radius:50%;box-shadow:0 0 0 4px rgba(44,36,24,.18);animation:guidePulse 1.4s ease-in-out infinite;pointer-events:none;}
@@ -189,7 +189,7 @@ textarea.free-input::placeholder{color:var(--sub);}
 .tdot{width:7px;height:7px;border-radius:50%;background:var(--sub);animation:tdot 1.4s infinite ease-in-out;}
 .tdot:nth-child(2){animation-delay:.2s;}.tdot:nth-child(3){animation-delay:.4s;}
 @keyframes tdot{0%,60%,100%{transform:translateY(0);opacity:.4;}30%{transform:translateY(-5px);opacity:1;}}
-.input-bar{display:flex;gap:8px;padding:10px 12px 76px;background:var(--panel);border-top:1px solid var(--border);flex-shrink:0;}
+.input-bar{display:flex;gap:8px;padding:10px 12px 90px;background:var(--panel);border-top:1px solid var(--border);flex-shrink:0;}
 .chat-actions-bar{display:none;gap:8px;padding:8px 12px;background:var(--panel);border-top:1px solid var(--border);flex-shrink:0;}
 .chat-actions-bar button{flex:1;padding:8px 6px;border-radius:50px;border:1.5px solid var(--border);background:var(--bg);font-size:12px;font-weight:600;color:var(--text);cursor:pointer;white-space:nowrap;}
 .chat-actions-bar button:active{background:var(--border);}
@@ -508,7 +508,7 @@ textarea.free-input::placeholder{color:var(--sub);}
 .hist-topic{display:inline-block;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:2px 7px;font-size:11px;font-weight:600;color:var(--text);margin-top:2px;}
 .hist-meta{flex:1;}
 .hist-phils{display:flex;gap:5px;margin-top:6px;}
-.hist-q-preview{font-size:13px;color:var(--sub);padding:0 14px 13px;line-height:1.5;max-height:calc(1.5em * 2);overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;white-space:normal;}
+.hist-q-preview{font-size:13px;color:var(--sub);padding:0 14px 16px;line-height:1.5;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;white-space:normal;}
 /* Expanded detail */
 .hist-detail-body{padding:0 14px 14px;display:none;flex-direction:column;gap:10px;border-top:1px solid var(--border);padding-top:12px;}
 .hist-detail-body.open{display:flex;}
@@ -8021,6 +8021,7 @@ async function startChatWithSpecificPhilosopher(philId) {
   document.getElementById('gachi-btn').textContent = '⚡ガチレス';
   document.getElementById('gachi-banner').classList.remove('show');
   document.getElementById('msgs').innerHTML = '';
+  { const _ci = document.getElementById('cinput'); if (_ci) { _ci.value = ''; _ci.style.height = 'auto'; } }
   hideChatActionsBar();
   curPhil = philId;
   goTo('screen-chat');
@@ -8268,7 +8269,7 @@ function layoutChipsMasonry(containerId) {
   const chips = Array.from(container.children);
   if (chips.length === 0) { container.style.height = '0px'; return; }
   const containerWidth = container.clientWidth;
-  const gapX = 12, gapY = 12;
+  const gapX = 14, gapY = 18;
   const colWidth = (containerWidth - gapX) / 2;
   const colHeights = [0, 0];
   container.style.position = 'relative';
@@ -8529,6 +8530,7 @@ function startChat(fromNote) {
   gachiBanner.classList.toggle('show', gachiMode);
   chatFromNote = !!fromNote;
   document.getElementById('msgs').innerHTML = '';
+  { const _ci = document.getElementById('cinput'); if (_ci) { _ci.value = ''; _ci.style.height = 'auto'; } }
   hideChatActionsBar();
   setChatHeader('master');
   goTo('screen-chat');
@@ -9747,6 +9749,7 @@ async function callPhil() {
       continuingFromEntryId = null; // 本当に新しく始める時だけ、継続情報もリセットする
       priorTranscriptForContinuation = null;
       document.getElementById('msgs').innerHTML = ''; // 画面上に前の会話が残らないようクリアする
+      { const _ci = document.getElementById('cinput'); if (_ci) { _ci.value = ''; _ci.style.height = 'auto'; } }
     } else {
       // 【バグ修正】「進行中の会話に呼ぶ」を選んだ場合、これは日をまたいでの「再会」では
       // なく、たった今の会話がそのまま続いている状態。以前はここでも下のalreadyTalked
@@ -9767,6 +9770,7 @@ async function callPhil() {
     // 吹き出しが残ったまま、新しい哲学者がそこに合流したように見えてしまっていた。
     // sessionActiveがfalse＝本当に新しい会話の始まりなので、ここで確実にクリアする。
     document.getElementById('msgs').innerHTML = '';
+    { const _ci = document.getElementById('cinput'); if (_ci) { _ci.value = ''; _ci.style.height = 'auto'; } }
     if (!pendingHandoffFramingNote) {
       continuingFromEntryId = null;
       priorTranscriptForContinuation = null;
@@ -11642,6 +11646,7 @@ async function startContinuedChat(defaultId) {
   document.getElementById('gachi-btn').textContent = '⚡ガチレス';
   document.getElementById('gachi-banner').classList.remove('show');
   document.getElementById('msgs').innerHTML = '';
+  { const _ci = document.getElementById('cinput'); if (_ci) { _ci.value = ''; _ci.style.height = 'auto'; } }
   hideChatActionsBar();
   curPhil = (defaultId === 'master' || !p) ? null : defaultId;
   goTo('screen-chat');
